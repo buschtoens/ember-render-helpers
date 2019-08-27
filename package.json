@@ -1,13 +1,22 @@
 {
   "name": "ember-render-helpers",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Complimentary render template helpers to the render modifiers",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-helper",
+    "ember-template-helper",
+    "template-helper",
+    "helper",
+    "render",
+    "@ember/render-modifiers",
+    "did-insert",
+    "did-update",
+    "will-destroy"
   ],
-  "repository": "",
+  "repository": "buschtoens/ember-render-helpers",
   "license": "MIT",
-  "author": "",
+  "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
   "directories": {
     "doc": "doc",
     "test": "tests"
