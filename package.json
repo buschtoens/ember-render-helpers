@@ -1,6 +1,6 @@
 {
   "name": "ember-render-helpers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Complimentary render template helpers to the render modifiers",
   "keywords": [
     "ember-addon",
