@@ -13,7 +13,10 @@
 [`@ember/render-modifiers`][render-modifiers] as template helpers:
 `{{did-insert}}`, `{{did-update}}`, `{{will-destroy}}`
 
+The original idea came from [this Pre-RFC][pre-rfc].
+
 [render-modifiers]: https://github.com/emberjs/ember-render-modifiers#readme
+[pre-rfc]: https://github.com/emberjs/rfcs/issues/484
 
 ## Installation
 
@@ -44,7 +47,6 @@ helpers are not triggered by parameter updates.
   {{will-destroy this.onWillDestroy 1 2 3 this.randomValue foo="bar" qux="baz"}}
   {{did-update   this.onDidUpdate   1 2 3 this.randomValue foo="bar" qux="baz"}}
 {{/if}}
-
 
 <button {{on "click" this.toggleVisibility}}>Toggle</button>
 <button {{on "click" this.rollTheDice}}>Random</button>
