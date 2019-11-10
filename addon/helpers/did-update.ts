@@ -18,7 +18,7 @@ export default class DidUpdateHelper extends Helper {
   compute(positional: PositionalParameters, named: NamedParameters): void {
     const fn = positional[0] as HelperCallback;
     assert(
-      `\`{{did-insert fn}}\` expects a function as the first parameter. You provided: ${fn}`,
+      `\`{{did-update fn}}\` expects a function as the first parameter. You provided: ${fn}`,
       typeof fn === 'function'
     );
     if (!this.didRun) {
