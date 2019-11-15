@@ -956,12 +956,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.15.1.tgz#b6859370cb8b6132575badc2b2e81702969deafb"
-  integrity sha512-bl1JSC+ABz/bCuOo+xjUKR9pIUeejj6SB7Ry+rs5kJNnYRJ8tPK57MO/8X8PXFApHb10ZbcXLR0R9gVAvdJa2g==
+"@clark/eslint-config-node@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.16.0.tgz#aa40085f2fb75bf584708d59087e06e543672e48"
+  integrity sha512-l3QPbpcIzZMuLu+9/MskJ7A6W0RWd6DrjsRZJv7jmlLLWLLAyeSbYpkl53WhBrCCpDpa15bHoWr6ugJwGWra8Q==
   dependencies:
-    "@clark/eslint-config" "^1.15.1"
+    "@clark/eslint-config" "^1.16.0"
     "@clark/eslint-config-node-order-imports" "^1.12.0"
     eslint-plugin-node "^10.0.0"
     lodash.merge "^4.6.2"
@@ -974,20 +974,6 @@
     "@clark/eslint-config" "^1.16.0"
     "@typescript-eslint/eslint-plugin" "^2.7.0"
     "@typescript-eslint/parser" "^2.7.0"
-
-"@clark/eslint-config@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.15.1.tgz#3ee711f12cd23a22194405089fe4cb0df9983369"
-  integrity sha512-iyWnOLUzxkMaUYgozLCJuJkMwYqSRENwjBfKg4VGg6t5aIBd2Y6pvqI9QFmMiJwDXhjOjL6sbWOK46FkwDTvmw==
-  dependencies:
-    eslint-config-airbnb-base "^14.0.0"
-    eslint-config-prettier "^6.5.0"
-    eslint-config-xo-space "^0.21.0"
-    eslint-plugin-import "^2.18.2"
-    eslint-plugin-node "^10.0.0"
-    eslint-plugin-prettier "^3.1.1"
-    eslint-plugin-unicorn "^12.1.0"
-    prettier "^1.18.2"
 
 "@clark/eslint-config@^1.16.0":
   version "1.16.0"
@@ -4418,28 +4404,6 @@ eslint-plugin-prettier@^3.1.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-unicorn@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-12.1.0.tgz#6ebff6c90ecf4df7ce1615e18928d10bb50c2ff5"
-  integrity sha512-DkPRrjaZaKa8GDjEyWGms/sqp2DcmVCcbwVi9WQXwN6+Sn0/joTC14SfA+BsCuxTaGPRm/7wa8NC8o5mNDyZpQ==
-  dependencies:
-    ci-info "^2.0.0"
-    clean-regexp "^1.0.0"
-    eslint-ast-utils "^1.1.0"
-    eslint-template-visitor "^1.0.0"
-    import-modules "^2.0.0"
-    lodash.camelcase "^4.3.0"
-    lodash.defaultsdeep "^4.6.1"
-    lodash.kebabcase "^4.1.1"
-    lodash.snakecase "^4.1.1"
-    lodash.topairs "^4.3.0"
-    lodash.upperfirst "^4.3.1"
-    read-pkg-up "^7.0.0"
-    regexpp "^3.0.0"
-    reserved-words "^0.1.2"
-    safe-regex "^2.0.2"
-    semver "^6.3.0"
-
 eslint-plugin-unicorn@^13.0.0:
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-13.0.0.tgz#3d73a17cc34ade1aaa02655ae78bbd8a2053fa81"
@@ -4470,7 +4434,7 @@ eslint-scope@^5.0.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-template-visitor@^1.0.0, eslint-template-visitor@^1.1.0:
+eslint-template-visitor@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/eslint-template-visitor/-/eslint-template-visitor-1.1.0.tgz#f090d124d1a52e05552149fc50468ed59608b166"
   integrity sha512-Lmy6QVlmFiIGl5fPi+8ACnov3sare+0Ouf7deJAGGhmUfeWJ5fVarELUxZRpsZ9sHejiJUq8626d0dn9uvcZTw==
@@ -7271,11 +7235,6 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.18.2:
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
-  integrity sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
-
 prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -7831,13 +7790,6 @@ safe-regex@^1.1.0:
   integrity sha1-QKNmnzsHfR6UPURinhV91IAjvy4=
   dependencies:
     ret "~0.1.10"
-
-safe-regex@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/safe-regex/-/safe-regex-2.0.2.tgz#3601b28d3aefe4b963d42f6c2cdb241265cbd63c"
-  integrity sha512-rRALJT0mh4qVFIJ9HvfjKDN77F9vp7kltOpFFI/8e6oKyHFmmxz4aSkY/YVauRDe7U0RrHdw9Lsxdel3E19s0A==
-  dependencies:
-    regexp-tree "~0.1.1"
 
 safe-regex@^2.1.1:
   version "2.1.1"
