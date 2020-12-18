@@ -64,6 +64,7 @@ jobs:
     runs-on: ubuntu-16.04
     needs: [test-locked-deps]
     strategy:
+      fail-fast: false
       matrix:
         scenario:
           - ember-lts-3.4
