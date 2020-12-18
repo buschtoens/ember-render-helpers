@@ -1,6 +1,6 @@
 # ember-render-helpers
 
-[![Build Status](https://travis-ci.org/buschtoens/ember-render-helpers.svg)](https://travis-ci.org/buschtoens/ember-render-helpers)
+![CI](https://github.com/buschtoens/ember-render-helpers/workflows/CI/badge.svg)
 [![npm version](https://badge.fury.io/js/ember-render-helpers.svg)](http://badge.fury.io/js/ember-render-helpers)
 [![Download Total](https://img.shields.io/npm/dt/ember-render-helpers.svg)](http://badge.fury.io/js/ember-render-helpers)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-render-helpers.svg)](https://emberobserver.com/addons/ember-render-helpers)
