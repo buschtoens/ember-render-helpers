@@ -14,7 +14,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 import { TestContext } from 'dummy/tests/helpers/test-context';
 
-module('Integration | Helper | will-destroy', function(hooks) {
+module('Integration | Helper | will-destroy', function (hooks) {
   setupRenderingTest(hooks);
 
   const TEMPLATE = hbs`
@@ -29,7 +29,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     {{~/unless~}}
   `;
 
-  test('it renders and calls the callback, when un-rendered', async function(this: TestContext, assert) {
+  test('it renders and calls the callback, when un-rendered', async function (this: TestContext, assert) {
     this.callback = () => {
       assert.step('callback called');
     };
@@ -52,7 +52,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     );
   });
 
-  test('it passes positional arguments, when un-rendered', async function(this: TestContext, assert) {
+  test('it passes positional arguments, when un-rendered', async function (this: TestContext, assert) {
     this.pos1 = 'first positional argument';
     this.pos2 = 'second positional argument';
 
@@ -83,7 +83,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     );
   });
 
-  test('it passes named arguments, when un-rendered', async function(this: TestContext, assert) {
+  test('it passes named arguments, when un-rendered', async function (this: TestContext, assert) {
     this.named1 = 'first named argument';
     this.named2 = 'second named argument';
 
@@ -117,7 +117,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     );
   });
 
-  test('it passes positional and named arguments, when un-rendered', async function(this: TestContext, assert) {
+  test('it passes positional and named arguments, when un-rendered', async function (this: TestContext, assert) {
     this.pos1 = 'first positional argument';
     this.pos2 = 'second positional argument';
     this.named1 = 'first named argument';
@@ -158,7 +158,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     );
   });
 
-  test('updating the callback does not cause it to be called', async function(this: TestContext, assert) {
+  test('updating the callback does not cause it to be called', async function (this: TestContext, assert) {
     this.callback = () => {
       assert.step('callback called');
     };
@@ -189,7 +189,7 @@ module('Integration | Helper | will-destroy', function(hooks) {
     );
   });
 
-  test('re-inserting the helper (`{{if}}`) triggers no callback', async function(this: TestContext, assert) {
+  test('re-inserting the helper (`{{if}}`) triggers no callback', async function (this: TestContext, assert) {
     this.isHidden = true;
     this.callback = () => {
       assert.step('callback called');
