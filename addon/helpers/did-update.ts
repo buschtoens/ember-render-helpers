@@ -23,6 +23,12 @@ export default class DidUpdateHelper extends Helper {
     );
     if (!this.didRun) {
       this.didRun = true;
+
+      // Consume individual properties to entangle tracking.
+      // https://github.com/emberjs/ember.js/issues/19277
+      positional.forEach(() => {});
+      Object.values(named);
+
       return;
     }
     fn(positional.slice(1), named);
