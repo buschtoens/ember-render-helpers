@@ -1153,10 +1153,10 @@
     mkdirp "^1.0.4"
     silent-error "^1.1.1"
 
-"@ember/test-helpers@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-2.2.1.tgz#584eb8359c4bf84670320a95e6af629d7526bc2a"
-  integrity sha512-S8GKP0tBkggim/8ReMREIKWRRsRilNTZGvnm4js673pnDZ1QIpxDx/EHZEf1V3loTvRGQGGmDbGFVlVIfW0vQg==
+"@ember/test-helpers@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-2.2.2.tgz#cc129ad6953bdee89c74ba6a345b16b2ea2eb35b"
+  integrity sha512-X7ro11GKNhGrdzW2MePOXwaIoXYH4ytjwjjzhOhh/PtjBiYjyjWUYOcZGsHgIPS7DiLjJU58IgwfL8EQpwirKA==
   dependencies:
     "@ember/test-waiters" "^2.4.0"
     broccoli-debug "^0.6.5"
