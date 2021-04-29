@@ -1,0 +1,20 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: ember-cli
+    versions:
+    - 3.25.3
+  - dependency-name: ember-template-lint
+    versions:
+    - 3.0.0
+    - 3.0.1
+  - dependency-name: "@ember/test-helpers"
+    versions:
+    - 2.2.2
