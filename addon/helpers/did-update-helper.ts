@@ -6,7 +6,7 @@ import type {
   PositionalParameters,
 } from 'ember-render-helpers/types';
 
-interface DidUpdateSignature {
+interface DidUpdateHelperSignature {
   Args: {
     Named: NamedParameters;
     Positional: [CallbackFunction, ...PositionalParameters];
@@ -19,17 +19,17 @@ interface DidUpdateSignature {
  * and named). It does not run during or after initial render, or before it is
  * un-rendered (removed from the DOM).
  */
-export default class DidUpdateHelper extends Helper<DidUpdateSignature> {
+export default class DidUpdateHelperHelper extends Helper<DidUpdateHelperSignature> {
   didRun = false;
 
   compute(
-    positional: DidUpdateSignature['Args']['Positional'],
-    named: DidUpdateSignature['Args']['Named'],
+    positional: DidUpdateHelperSignature['Args']['Positional'],
+    named: DidUpdateHelperSignature['Args']['Named'],
   ): void {
     const [callback, ...positionalParameters] = positional;
 
     assert(
-      `\`{{did-update}}\` expects a callback function as the first parameter. You provided: ${callback}`,
+      `\`{{did-update-helper}}\` expects a callback function as the first parameter. You provided: ${callback}`,
       typeof callback === 'function',
     );
 

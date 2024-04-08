@@ -19,7 +19,7 @@ interface TestContext extends BaseTestContext {
   someCondition?: boolean;
 }
 
-module('Integration | Helper | will-destroy', function (hooks) {
+module('Integration | Helper | will-destroy-helper', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
@@ -38,7 +38,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy this.callback}}
+      {{will-destroy-helper this.callback}}
     `);
 
     assert.verifySteps([]);
@@ -58,7 +58,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy
+      {{will-destroy-helper
         this.callback
         this.argument1
         this.argument2
@@ -87,7 +87,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy
+      {{will-destroy-helper
         this.callback
         argument1=this.argument1
         argument2=this.argument2
@@ -112,7 +112,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy this.callback}}
+      {{will-destroy-helper this.callback}}
     `);
 
     assert.verifySteps([]);
@@ -142,7 +142,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy
+      {{will-destroy-helper
         this.callback
         this.argument1
         this.argument2
@@ -181,7 +181,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{will-destroy
+      {{will-destroy-helper
         this.callback
         argument1=this.argument1
         argument2=this.argument2
@@ -219,7 +219,7 @@ module('Integration | Helper | will-destroy', function (hooks) {
 
     await render<TestContext>(hbs`
       {{#if this.someCondition}}
-        {{will-destroy this.callback}}
+        {{will-destroy-helper this.callback}}
       {{/if}}
     `);
 

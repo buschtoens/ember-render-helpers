@@ -6,7 +6,7 @@ import type {
   PositionalParameters,
 } from 'ember-render-helpers/types';
 
-interface WillDestroySignature {
+interface WillDestroyHelperSignature {
   Args: {
     Named: NamedParameters;
     Positional: [CallbackFunction, ...PositionalParameters];
@@ -19,19 +19,19 @@ interface WillDestroySignature {
  * (removed from the DOM). It does not run during or after initial render, or
  * when its arguments are updated.
  */
-export default class WillDestroyHelper extends Helper<WillDestroySignature> {
+export default class WillDestroyHelperHelper extends Helper<WillDestroyHelperSignature> {
   callback?: CallbackFunction;
   named?: NamedParameters;
   positional?: PositionalParameters;
 
   compute(
-    positional: WillDestroySignature['Args']['Positional'],
-    named: WillDestroySignature['Args']['Named'],
+    positional: WillDestroyHelperSignature['Args']['Positional'],
+    named: WillDestroyHelperSignature['Args']['Named'],
   ): void {
     const [callback, ...positionalParameters] = positional;
 
     assert(
-      `\`{{will-destroy}}\` expects a function as the first parameter. You provided: ${callback}`,
+      `\`{{will-destroy-helper}}\` expects a function as the first parameter. You provided: ${callback}`,
       typeof callback === 'function',
     );
 

@@ -6,7 +6,7 @@ import type {
   PositionalParameters,
 } from 'ember-render-helpers/types';
 
-interface DidInsertSignature {
+interface DidInsertHelperSignature {
   Args: {
     Named: NamedParameters;
     Positional: [CallbackFunction, ...PositionalParameters];
@@ -19,17 +19,17 @@ interface DidInsertSignature {
  * (inserted in the DOM). It does not run during or after it is un-rendered
  * (removed from the DOM), or when its arguments are updated.
  */
-export default class DidInsertHelper extends Helper<DidInsertSignature> {
+export default class DidInsertHelperHelper extends Helper<DidInsertHelperSignature> {
   didRun = false;
 
   compute(
-    positional: DidInsertSignature['Args']['Positional'],
-    named: DidInsertSignature['Args']['Named'],
+    positional: DidInsertHelperSignature['Args']['Positional'],
+    named: DidInsertHelperSignature['Args']['Named'],
   ): void {
     const [callback, ...positionalParameters] = positional;
 
     assert(
-      `\`{{did-insert}}\` expects a callback function as the first parameter. You provided: ${callback}`,
+      `\`{{did-insert-helper}}\` expects a callback function as the first parameter. You provided: ${callback}`,
       typeof callback === 'function',
     );
 

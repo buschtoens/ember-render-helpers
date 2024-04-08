@@ -18,7 +18,7 @@ interface TestContext extends BaseTestContext {
   someCondition?: boolean;
 }
 
-module('Integration | Helper | did-update', function (hooks) {
+module('Integration | Helper | did-insert-helper', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
@@ -37,10 +37,10 @@ module('Integration | Helper | did-update', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{did-update this.callback}}
+      {{did-insert-helper this.callback}}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
   });
 
   test('We can pass positional arguments', async function (this: TestContext, assert) {
@@ -53,7 +53,7 @@ module('Integration | Helper | did-update', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{did-update
+      {{did-insert-helper
         this.callback
         this.argument1
         this.argument2
@@ -61,7 +61,7 @@ module('Integration | Helper | did-update', function (hooks) {
       }}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
   });
 
   test('We can pass named arguments', async function (this: TestContext, assert) {
@@ -78,7 +78,7 @@ module('Integration | Helper | did-update', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{did-update
+      {{did-insert-helper
         this.callback
         argument1=this.argument1
         argument2=this.argument2
@@ -86,10 +86,10 @@ module('Integration | Helper | did-update', function (hooks) {
       }}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
   });
 
-  test('Updating the callback function triggers the callback function', async function (this: TestContext, assert) {
+  test('Updating the callback function does not trigger the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named) => {
       assert.deepEqual(positional, []);
 
@@ -99,10 +99,10 @@ module('Integration | Helper | did-update', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{did-update this.callback}}
+      {{did-insert-helper this.callback}}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
 
     run(() => {
       setProperties(this, {
@@ -112,12 +112,12 @@ module('Integration | Helper | did-update', function (hooks) {
       });
     });
 
-    assert.verifySteps(['new callback']);
+    assert.verifySteps([]);
   });
 
-  test('Updating positional arguments triggers the callback function', async function (this: TestContext, assert) {
+  test('Updating positional arguments does not trigger the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named) => {
-      assert.deepEqual(positional, ['abc', 789, true]);
+      assert.deepEqual(positional, ['123', 456, false]);
 
       assert.deepEqual(named, {});
 
@@ -125,7 +125,7 @@ module('Integration | Helper | did-update', function (hooks) {
     };
 
     await render<TestContext>(hbs`
-      {{did-update
+      {{did-insert-helper
         this.callback
         this.argument1
         this.argument2
@@ -133,7 +133,7 @@ module('Integration | Helper | did-update', function (hooks) {
       }}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
 
     run(() => {
       setProperties(this, {
@@ -143,24 +143,24 @@ module('Integration | Helper | did-update', function (hooks) {
       });
     });
 
-    assert.verifySteps(['callback']);
+    assert.verifySteps([]);
   });
 
-  test('Updating named arguments triggers the callback function', async function (this: TestContext, assert) {
+  test('Updating named arguments does not trigger the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named) => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {
-        argument1: 'abc',
-        argument2: 789,
-        argument3: true,
+        argument1: '123',
+        argument2: 456,
+        argument3: false,
       });
 
       assert.step('callback');
     };
 
     await render<TestContext>(hbs`
-      {{did-update
+      {{did-insert-helper
         this.callback
         argument1=this.argument1
         argument2=this.argument2
@@ -168,7 +168,7 @@ module('Integration | Helper | did-update', function (hooks) {
       }}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
 
     run(() => {
       setProperties(this, {
@@ -178,10 +178,10 @@ module('Integration | Helper | did-update', function (hooks) {
       });
     });
 
-    assert.verifySteps(['callback']);
+    assert.verifySteps([]);
   });
 
-  test('Re-inserting the helper does not trigger the callback function', async function (this: TestContext, assert) {
+  test('Re-inserting the helper triggers the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named) => {
       assert.deepEqual(positional, []);
 
@@ -194,11 +194,11 @@ module('Integration | Helper | did-update', function (hooks) {
 
     await render<TestContext>(hbs`
       {{#if this.someCondition}}
-        {{did-update this.callback}}
+        {{did-insert-helper this.callback}}
       {{/if}}
     `);
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
 
     run(() => {
       setProperties(this, {
@@ -217,6 +217,6 @@ module('Integration | Helper | did-update', function (hooks) {
       });
     });
 
-    assert.verifySteps([]);
+    assert.verifySteps(['new callback']);
   });
 });

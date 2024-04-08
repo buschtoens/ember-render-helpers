@@ -1,9 +1,9 @@
-import type DidInsertHelper from './helpers/did-insert';
-import type DidUpdateHelper from './helpers/did-update';
-import type WillDestroyHelper from './helpers/will-destroy';
+import type DidInsertHelperHelper from './helpers/did-insert-helper';
+import type DidUpdateHelperHelper from './helpers/did-update-helper';
+import type WillDestroyHelperHelper from './helpers/will-destroy-helper';
 
 export default interface EmberRenderHelpersRegistry {
-  'did-insert': typeof DidInsertHelper;
-  'did-update': typeof DidUpdateHelper;
-  'will-destroy': typeof WillDestroyHelper;
+  'did-insert-helper': typeof DidInsertHelperHelper;
+  'did-update-helper': typeof DidUpdateHelperHelper;
+  'will-destroy-helper': typeof WillDestroyHelperHelper;
 }
