@@ -1,0 +1,94 @@
+{
+  "name": "ember-render-helpers",
+  "version": "0.2.0",
+  "description": "Complimentary render template helpers to the render modifiers",
+  "keywords": [
+    "ember-addon",
+    "ember-helper",
+    "ember-template-helper",
+    "template-helper",
+    "helper",
+    "render",
+    "@ember/render-modifiers",
+    "did-insert",
+    "did-update",
+    "will-destroy"
+  ],
+  "repository": "buschtoens/ember-render-helpers",
+  "license": "MIT",
+  "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "concurrently \"npm:build:*\" --names \"build:\"",
+    "build:js": "rollup --config",
+    "build:types": "glint --declaration",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "prepack": "rollup --config",
+    "start": "concurrently \"npm:start:*\" --names \"start:\"",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "glint --declaration --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'",
+    "test:ember-compatibility": "./node_modules/.bin/ember try:one"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.7",
+    "decorator-transforms": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-typescript": "^7.23.6",
+    "@babel/runtime": "^7.24.0",
+    "@embroider/addon-dev": "^4.2.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.6",
+    "babel-plugin-ember-template-compilation": "^2.2.1",
+    "concurrently": "^8.2.2",
+    "rollup": "^4.13.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "^5.4.4"
+  },
+  "engines": {
+    "node": "18.* || >= 20"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "app-js": {},
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
+  },
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist"
+  ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  }
+}

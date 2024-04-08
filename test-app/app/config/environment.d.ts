@@ -2,7 +2,7 @@ export default config;
 
 /**
  * Type declarations for
- *    import config from 'dummy/config/environment'
+ *    import config from 'test-app/config/environment'
  */
 declare const config: {
   APP: Record<string, unknown>;
