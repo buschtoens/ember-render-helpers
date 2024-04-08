@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": "18.* || >= 20"
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint-plugin-import@2.29.1>tsconfig-paths": "^4.2.0"
+    }
   }
 }

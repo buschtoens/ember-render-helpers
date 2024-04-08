@@ -1,3 +1,4 @@
 packages:
-  - 'ember-render-helpers'
-  - 'test-app'
+  - packages/ember-codemod-ember-render-helpers-to-v1
+  - packages/ember-render-helpers
+  - test-app

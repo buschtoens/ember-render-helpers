@@ -1,0 +1,10 @@
+{{#let
+  (did-insert-helper this.doSomething)
+  (did-update-helper this.doSomething)
+  (will-destroy-helper this.doSomething)
+  as |onInsert onUpdate onDestroy|
+}}
+  {{onInsert}}
+  {{onUpdate}}
+  {{onDestroy}}
+{{/let}}
