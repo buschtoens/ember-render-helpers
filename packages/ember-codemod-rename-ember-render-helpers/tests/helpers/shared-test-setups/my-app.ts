@@ -1,11 +1,11 @@
 import type { CodemodOptions, Options } from '../../../src/types/index.js';
 
 const codemodOptions: CodemodOptions = {
-  projectRoot: 'tmp/sample-project',
+  projectRoot: 'tmp/my-app',
 };
 
 const options: Options = {
-  projectRoot: 'tmp/sample-project',
+  projectRoot: 'tmp/my-app',
 };
 
 export { codemodOptions, options };

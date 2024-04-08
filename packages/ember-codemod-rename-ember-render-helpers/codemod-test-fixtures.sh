@@ -17,4 +17,4 @@ pnpm build
 
 ./codemod-test-fixture.sh \
   -N "" \
-  sample-project
+  my-app
