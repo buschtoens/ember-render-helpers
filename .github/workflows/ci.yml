@@ -19,6 +19,7 @@ jobs:
     strategy:
       matrix:
         package-location:
+          - 'packages/ember-codemod-rename-ember-render-helpers'
           - 'packages/ember-render-helpers'
           - 'test-app'
     timeout-minutes: 5
@@ -50,6 +51,7 @@ jobs:
     strategy:
       matrix:
         package-location:
+          - 'packages/ember-codemod-rename-ember-render-helpers'
           - 'packages/ember-render-helpers'
           - 'test-app'
     timeout-minutes: 5
