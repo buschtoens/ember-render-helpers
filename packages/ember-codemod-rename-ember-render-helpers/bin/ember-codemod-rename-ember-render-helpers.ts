@@ -16,10 +16,17 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Where to run the codemod',
     type: 'string',
   })
+  .option('type', {
+    choices: ['app', 'v1-addon'] as const,
+    demandOption: true,
+    describe: 'Type of your Ember project',
+    type: 'string',
+  })
   .parseSync();
 
 const codemodOptions: CodemodOptions = {
   projectRoot: argv['root'] ?? process.cwd(),
+  projectType: argv['type'],
 };
 
 runCodemod(codemodOptions);

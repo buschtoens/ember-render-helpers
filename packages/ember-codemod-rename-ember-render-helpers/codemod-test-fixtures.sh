@@ -16,5 +16,5 @@
 pnpm build
 
 ./codemod-test-fixture.sh \
-  -N "" \
+  -N "--type app" \
   my-app

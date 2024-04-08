@@ -9,7 +9,12 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 
 ### Arguments
 
-[PROVIDE REQUIRED AND OPTIONAL ARGUMENTS.]
+You must pass `--type` to indicate what type of project you have.
+
+```sh
+npx ember-codemod-rename-ember-render-helpers --type app
+npx ember-codemod-rename-ember-render-helpers --type v1-addon
+```
 
 <details>
 
