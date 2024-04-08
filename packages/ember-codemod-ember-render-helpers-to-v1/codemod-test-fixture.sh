@@ -39,6 +39,6 @@ fi
 rm -r "tests/fixtures/$FIXTURE/output"
 cp -r "tests/fixtures/$FIXTURE/input" "tests/fixtures/$FIXTURE/output"
 
-./dist/bin/ember-codemod-rename-ember-render-helpers.js $NAMED_ARGUMENTS --root="tests/fixtures/$FIXTURE/output"
+./dist/bin/ember-codemod-ember-render-helpers-to-v1.js $NAMED_ARGUMENTS --root="tests/fixtures/$FIXTURE/output"
 
 echo "SUCCESS: Updated the output of $FIXTURE.\n"

@@ -1,5 +1,5 @@
 {
-  "name": "ember-codemod-rename-ember-render-helpers",
+  "name": "ember-codemod-ember-render-helpers-to-v1",
   "version": "0.0.0",
   "private": true,
   "description": "Rename helpers from ember-render-helpers",
@@ -13,7 +13,7 @@
   "author": "",
   "type": "module",
   "main": "dist/src/index.js",
-  "bin": "dist/bin/ember-codemod-rename-ember-render-helpers.js",
+  "bin": "dist/bin/ember-codemod-ember-render-helpers-to-v1.js",
   "directories": {
     "test": "tests"
   },

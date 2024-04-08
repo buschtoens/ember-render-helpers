@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-COMMAND="ember-codemod-rename-ember-render-helpers"
+COMMAND="ember-codemod-ember-render-helpers-to-v1"
 ENVIRONMENT=$1
 
 if [ $ENVIRONMENT = "--production" ]

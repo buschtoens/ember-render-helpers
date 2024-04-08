@@ -1,4 +1,4 @@
 packages:
-  - packages/ember-codemod-rename-ember-render-helpers
+  - packages/ember-codemod-ember-render-helpers-to-v1
   - packages/ember-render-helpers
   - test-app

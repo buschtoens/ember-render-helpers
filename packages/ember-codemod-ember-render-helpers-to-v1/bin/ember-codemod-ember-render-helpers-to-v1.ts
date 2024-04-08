@@ -8,7 +8,7 @@ import { runCodemod } from '../src/index.js';
 import type { CodemodOptions } from '../src/types/index.js';
 
 // Provide a title to the process in `ps`
-process.title = 'ember-codemod-rename-ember-render-helpers';
+process.title = 'ember-codemod-ember-render-helpers-to-v1';
 
 // Set codemod options
 const argv = yargs(hideBin(process.argv))

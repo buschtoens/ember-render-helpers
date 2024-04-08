@@ -1,6 +1,6 @@
-[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/ember-codemod-rename-ember-render-helpers/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/ember-codemod-rename-ember-render-helpers/actions/workflows/ci.yml)
+[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/ember-codemod-ember-render-helpers-to-v1/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/ember-codemod-ember-render-helpers-to-v1/actions/workflows/ci.yml)
 
-# ember-codemod-rename-ember-render-helpers
+# ember-codemod-ember-render-helpers-to-v1
 
 _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 
@@ -12,8 +12,8 @@ _Codemod to [PROVIDE A SHORT DESCRIPTION.]_
 You must pass `--type` to indicate what type of project you have.
 
 ```sh
-npx ember-codemod-rename-ember-render-helpers --type app
-npx ember-codemod-rename-ember-render-helpers --type v1-addon
+npx ember-codemod-ember-render-helpers-to-v1 --type app
+npx ember-codemod-ember-render-helpers-to-v1 --type v1-addon
 ```
 
 <details>
@@ -23,7 +23,7 @@ npx ember-codemod-rename-ember-render-helpers --type v1-addon
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx ember-codemod-rename-ember-render-helpers --root <path/to/your/project>
+npx ember-codemod-ember-render-helpers-to-v1 --root <path/to/your/project>
 ```
 
 </details>
@@ -42,7 +42,7 @@ cd <path/to/cloned/repo>
 pnpm build
 
 # Run codemod
-./dist/bin/ember-codemod-rename-ember-render-helpers.js --root <path/to/your/project>
+./dist/bin/ember-codemod-ember-render-helpers-to-v1.js --root <path/to/your/project>
 ```
 
 
