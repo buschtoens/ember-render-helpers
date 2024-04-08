@@ -15,7 +15,7 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
 
-  packages/ember-codemod-rename-ember-render-helpers:
+  packages/ember-codemod-ember-render-helpers-to-v1:
     dependencies:
       '@codemod-utils/ast-template':
         specifier: ^1.1.2

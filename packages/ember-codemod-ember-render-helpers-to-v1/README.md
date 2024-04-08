@@ -1,8 +1,12 @@
-[![This project uses GitHub Actions for continuous integration.](https://github.com/<your-github-handle>/ember-codemod-ember-render-helpers-to-v1/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-handle>/ember-codemod-ember-render-helpers-to-v1/actions/workflows/ci.yml)
+[![This project uses GitHub Actions for continuous integration.](https://github.com/buschtoens/ember-render-helpers/actions/workflows/ci.yml/badge.svg)](https://github.com/buschtoens/ember-render-helpers/actions/workflows/ci.yml)
 
 # ember-codemod-ember-render-helpers-to-v1
 
-_Codemod to [PROVIDE A SHORT DESCRIPTION.]_
+The codemod helps you rename helpers after updating `ember-render-helpers` to `v1.0.0`.
+
+- Rename `{{did-insert}}` to `{{did-insert-helper}}`
+- Rename `{{did-update}}` to `{{did-update-helper}}`
+- Rename `{{will-destroy}}` to `{{will-destroy-helper}}`
 
 
 ## Usage
