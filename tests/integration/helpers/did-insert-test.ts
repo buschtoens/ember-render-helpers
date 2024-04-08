@@ -1,312 +1,222 @@
-import { render } from '@ember/test-helpers';
-import { setupRenderingTest } from 'ember-qunit';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { setProperties } from '@ember/object';
+import { run } from '@ember/runloop';
+import {
+  render,
+  type TestContext as BaseTestContext,
+} from '@ember/test-helpers';
+import { setupRenderingTest } from 'dummy/tests/helpers';
+import { hbs } from 'ember-cli-htmlbars';
+import type { CallbackFunction } from 'ember-render-helpers/types';
 import { module, test } from 'qunit';
 
-import { getProperties, set } from '@ember/object';
-import { run } from '@ember/runloop';
-
-import {
-  PositionalParameters,
-  NamedParameters
-} from 'ember-render-helpers/types';
-
-import hbs from 'htmlbars-inline-precompile';
-
-import { TestContext } from 'dummy/tests/helpers/test-context';
+interface TestContext extends BaseTestContext {
+  argument1: any;
+  argument2: any;
+  argument3: any;
+  callback: CallbackFunction;
+  someCondition?: boolean;
+}
 
 module('Integration | Helper | did-insert', function (hooks) {
   setupRenderingTest(hooks);
 
-  const TEMPLATE = hbs`
-    {{~#unless this.isHidden~}}
-      {{~did-insert
+  hooks.beforeEach(function (this: TestContext) {
+    this.argument1 = '123';
+    this.argument2 = 456;
+    this.argument3 = false;
+  });
+
+  test('We can pass a callback function', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, []);
+
+      assert.deepEqual(named, {});
+
+      assert.step('callback');
+    };
+
+    await render<TestContext>(hbs`
+      {{did-insert this.callback}}
+    `);
+
+    assert.verifySteps(['callback']);
+  });
+
+  test('We can pass positional arguments', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, ['123', 456, false]);
+
+      assert.deepEqual(named, {});
+
+      assert.step('callback');
+    };
+
+    await render<TestContext>(hbs`
+      {{did-insert
         this.callback
-        this.pos1
-        this.pos2
-        named1=this.named1
-        named2=this.named2
-      ~}}
-    {{~/unless~}}
-  `;
+        this.argument1
+        this.argument2
+        this.argument3
+      }}
+    `);
 
-  test('it renders and calls the callback', async function (this: TestContext, assert) {
-    this.callback = () => {
-      assert.step('callback called');
-    };
-
-    await render(TEMPLATE);
-
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes.'
-    );
-
-    assert.verifySteps(['callback called'], 'It calls the callback.');
+    assert.verifySteps(['callback']);
   });
 
-  test('it passes positional arguments', async function (this: TestContext, assert) {
-    this.pos1 = 'first positional argument';
-    this.pos2 = 'second positional argument';
+  test('We can pass named arguments', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, []);
 
-    this.callback = (positional: PositionalParameters) => {
-      assert.step('callback called');
-      assert.deepEqual(
-        positional,
-        [this.pos1, this.pos2],
-        'The passed positional arguments match the input.'
-      );
+      assert.deepEqual(named, {
+        argument1: '123',
+        argument2: 456,
+        argument3: false,
+      });
+
+      assert.step('callback');
     };
 
-    await render(TEMPLATE);
+    await render<TestContext>(hbs`
+      {{did-insert
+        this.callback
+        argument1=this.argument1
+        argument2=this.argument2
+        argument3=this.argument3
+      }}
+    `);
 
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
-
-    assert.verifySteps(['callback called'], 'It calls the callback.');
+    assert.verifySteps(['callback']);
   });
 
-  test('it passes named arguments', async function (this: TestContext, assert) {
-    this.named1 = 'first named argument';
-    this.named2 = 'second named argument';
+  test('Updating the callback function does not trigger the callback function', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, []);
 
-    this.callback = (
-      _positional: PositionalParameters,
-      named: NamedParameters
-    ) => {
-      assert.step('callback called');
-      assert.deepEqual(
-        named,
-        getProperties(this, 'named1', 'named2'),
-        'The passed named arguments match the input.'
-      );
+      assert.deepEqual(named, {});
+
+      assert.step('callback');
     };
 
-    await render(TEMPLATE);
+    await render<TestContext>(hbs`
+      {{did-insert this.callback}}
+    `);
 
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
+    assert.verifySteps(['callback']);
 
-    assert.verifySteps(['callback called'], 'It calls the callback.');
+    run(() => {
+      setProperties(this, {
+        callback: () => {
+          assert.step('new callback');
+        },
+      });
+    });
+
+    assert.verifySteps([]);
   });
 
-  test('it passes positional and named arguments', async function (this: TestContext, assert) {
-    this.pos1 = 'first positional argument';
-    this.pos2 = 'second positional argument';
-    this.named1 = 'first named argument';
-    this.named2 = 'second named argument';
+  test('Updating positional arguments does not trigger the callback function', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, ['123', 456, false]);
 
-    this.callback = (
-      positional: PositionalParameters,
-      named: NamedParameters
-    ) => {
-      assert.step('callback called');
-      assert.deepEqual(
-        positional,
-        [this.pos1, this.pos2],
-        'The passed positional arguments match the input.'
-      );
-      assert.deepEqual(
-        named,
-        getProperties(this, 'named1', 'named2'),
-        'The passed named arguments match the input.'
-      );
+      assert.deepEqual(named, {});
+
+      assert.step('callback');
     };
 
-    await render(TEMPLATE);
+    await render<TestContext>(hbs`
+      {{did-insert
+        this.callback
+        this.argument1
+        this.argument2
+        this.argument3
+      }}
+    `);
 
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
+    assert.verifySteps(['callback']);
 
-    assert.verifySteps(['callback called'], 'It calls the callback.');
+    run(() => {
+      setProperties(this, {
+        argument1: 'abc',
+        argument2: 789,
+        argument3: true,
+      });
+    });
+
+    assert.verifySteps([]);
   });
 
-  test('updates to positional arguments do not trigger another callback', async function (this: TestContext, assert) {
-    this.pos1 = 'first positional argument';
-    this.pos2 = 'second positional argument';
+  test('Updating named arguments does not trigger the callback function', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, []);
 
-    this.callback = (positional: PositionalParameters) => {
-      assert.step('callback called');
-      assert.deepEqual(
-        positional,
-        [this.pos1, this.pos2],
-        'The passed positional arguments match the input.'
-      );
+      assert.deepEqual(named, {
+        argument1: '123',
+        argument2: 456,
+        argument3: false,
+      });
+
+      assert.step('callback');
     };
 
-    await render(TEMPLATE);
+    await render<TestContext>(hbs`
+      {{did-insert
+        this.callback
+        argument1=this.argument1
+        argument2=this.argument2
+        argument3=this.argument3
+      }}
+    `);
 
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
+    assert.verifySteps(['callback']);
 
-    assert.verifySteps(
-      ['callback called'],
-      'It calls the callback once before the update.'
-    );
+    run(() => {
+      setProperties(this, {
+        argument1: 'abc',
+        argument2: 789,
+        argument3: true,
+      });
+    });
 
-    run(() => set(this, 'pos1', 'something else'));
-
-    assert.verifySteps([], 'The callback is not called again.');
+    assert.verifySteps([]);
   });
 
-  test('updates to named arguments do not trigger another callback', async function (this: TestContext, assert) {
-    this.named1 = 'first named argument';
-    this.named2 = 'second named argument';
+  test('Re-inserting the helper triggers the callback function', async function (this: TestContext, assert) {
+    this.callback = (positional, named) => {
+      assert.deepEqual(positional, []);
 
-    this.callback = (
-      _positional: PositionalParameters,
-      named: NamedParameters
-    ) => {
-      assert.step('callback called');
-      assert.deepEqual(
-        named,
-        getProperties(this, 'named1', 'named2'),
-        'The passed named arguments match the input.'
-      );
+      assert.deepEqual(named, {});
+
+      assert.step('callback');
     };
 
-    await render(TEMPLATE);
+    this.someCondition = true;
 
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
+    await render<TestContext>(hbs`
+      {{#if this.someCondition}}
+        {{did-insert this.callback}}
+      {{/if}}
+    `);
 
-    assert.verifySteps(
-      ['callback called'],
-      'It calls the callback once before the update.'
-    );
+    assert.verifySteps(['callback']);
 
-    run(() => set(this, 'named1', 'something else'));
+    run(() => {
+      setProperties(this, {
+        someCondition: false,
+      });
+    });
 
-    assert.verifySteps([], 'The callback is not called again.');
-  });
+    assert.verifySteps([]);
 
-  test('updating the callback does not cause it to be called again', async function (this: TestContext, assert) {
-    this.callback = () => {
-      assert.step('callback called');
-    };
+    run(() => {
+      setProperties(this, {
+        callback: () => {
+          assert.step('new callback');
+        },
+        someCondition: true,
+      });
+    });
 
-    await render(TEMPLATE);
-
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
-
-    assert.verifySteps(
-      ['callback called'],
-      'It calls the callback once before the callback is updated.'
-    );
-
-    run(() =>
-      set(this, 'callback', () => {
-        assert.step('never called');
-      })
-    );
-
-    assert.verifySteps(
-      [],
-      'The callback is not called again, after the update.'
-    );
-  });
-
-  test('re-inserting the helper (`{{if}}`) triggers the callback', async function (this: TestContext, assert) {
-    this.isHidden = true;
-    this.callback = () => {
-      assert.step('callback called');
-    };
-
-    await render(TEMPLATE);
-
-    assert.verifySteps(
-      [],
-      'The callback was not called, because the helper was not yet rendered.'
-    );
-
-    run(() => set(this, 'isHidden', false));
-
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
-
-    assert.verifySteps(
-      ['callback called'],
-      'The callback we called once, because the helper became visible.'
-    );
-
-    run(() => set(this, 'isHidden', true));
-
-    assert.verifySteps(
-      [],
-      'The callback is not called again, when the helper became invisible.'
-    );
-
-    run(() => set(this, 'isHidden', false));
-
-    assert.verifySteps(
-      ['callback called'],
-      'The callback we called once, because the helper became visible again.'
-    );
-  });
-
-  test('the updated callback is called, when the helper is re-inserted', async function (this: TestContext, assert) {
-    this.callback = () => {
-      assert.step('callback called');
-    };
-
-    await render(TEMPLATE);
-
-    assert.strictEqual(
-      this.element.textContent,
-      '',
-      'It does not produce any DOM nodes'
-    );
-
-    assert.verifySteps(
-      ['callback called'],
-      'It calls the callback once before the callback is updated.'
-    );
-
-    run(() =>
-      set(this, 'callback', () => {
-        assert.step('new callback called');
-      })
-    );
-
-    assert.verifySteps(
-      [],
-      'The callback is not called again, after the update.'
-    );
-
-    run(() => set(this, 'isHidden', true));
-
-    assert.verifySteps(
-      [],
-      'The callback is not called again, after the helper was hidden.'
-    );
-
-    run(() => set(this, 'isHidden', false));
-
-    assert.verifySteps(
-      ['new callback called'],
-      'The callback is not called again, after the helper was hidden.'
-    );
+    assert.verifySteps(['new callback']);
   });
 });

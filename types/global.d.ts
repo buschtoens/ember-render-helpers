@@ -1,6 +1,6 @@
 // Types for compiled templates
 declare module 'ember-render-helpers/templates/*' {
-  import { TemplateFactory } from 'htmlbars-inline-precompile';
+  import type { TemplateFactory } from 'ember-cli-htmlbars';
   const tmpl: TemplateFactory;
   export default tmpl;
 }

@@ -1,28 +1,44 @@
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
-
-import {
-  PositionalParameters,
+import type {
+  CallbackFunction,
   NamedParameters,
-  HelperCallback
+  PositionalParameters,
 } from 'ember-render-helpers/types';
+
+interface DidInsertSignature {
+  Args: {
+    Named: NamedParameters;
+    Positional: [CallbackFunction, ...PositionalParameters];
+  };
+  Return: void;
+}
 
 /**
  * This helper is activated only when it is rendered for the first time
  * (inserted in the DOM). It does not run during or after it is un-rendered
  * (removed from the DOM), or when its arguments are updated.
  */
-export default class DidInsertHelper extends Helper {
+export default class DidInsertHelper extends Helper<DidInsertSignature> {
   didRun = false;
 
-  compute(positional: PositionalParameters, named: NamedParameters): void {
-    const fn = positional[0] as HelperCallback;
+  compute(
+    positional: DidInsertSignature['Args']['Positional'],
+    named: DidInsertSignature['Args']['Named'],
+  ): void {
+    const [callback, ...positionalParameters] = positional;
+
     assert(
-      `\`{{did-insert fn}}\` expects a function as the first parameter. You provided: ${fn}`,
-      typeof fn === 'function'
+      `\`{{did-insert}}\` expects a callback function as the first parameter. You provided: ${callback}`,
+      typeof callback === 'function',
     );
-    if (this.didRun) return;
+
+    if (this.didRun) {
+      return;
+    }
+
     this.didRun = true;
-    fn(positional.slice(1), named);
+
+    callback(positionalParameters, named);
   }
 }

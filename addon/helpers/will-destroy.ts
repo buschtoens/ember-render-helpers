@@ -1,38 +1,50 @@
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
-
-import {
-  PositionalParameters,
+import type {
+  CallbackFunction,
   NamedParameters,
-  HelperCallback
+  PositionalParameters,
 } from 'ember-render-helpers/types';
+
+interface WillDestroySignature {
+  Args: {
+    Named: NamedParameters;
+    Positional: [CallbackFunction, ...PositionalParameters];
+  };
+  Return: void;
+}
 
 /**
  * This helper is activated immediately before the helper is un-rendered
  * (removed from the DOM). It does not run during or after initial render, or
  * when its arguments are updated.
  */
-export default class WillDestroyHelper extends Helper {
-  fn?: (positional: PositionalParameters, named: NamedParameters) => void;
-  positional?: PositionalParameters;
+export default class WillDestroyHelper extends Helper<WillDestroySignature> {
+  callback?: CallbackFunction;
   named?: NamedParameters;
+  positional?: PositionalParameters;
 
-  compute(positional: PositionalParameters, named: NamedParameters): void {
-    const fn = positional[0] as HelperCallback;
+  compute(
+    positional: WillDestroySignature['Args']['Positional'],
+    named: WillDestroySignature['Args']['Named'],
+  ): void {
+    const [callback, ...positionalParameters] = positional;
+
     assert(
-      `\`{{did-insert fn}}\` expects a function as the first parameter. You provided: ${fn}`,
-      typeof fn === 'function'
+      `\`{{will-destroy}}\` expects a function as the first parameter. You provided: ${callback}`,
+      typeof callback === 'function',
     );
-    this.fn = fn;
-    this.positional = positional.slice(1);
+
+    this.callback = callback;
     this.named = named;
+    this.positional = positionalParameters;
   }
 
   willDestroy() {
-    if (this.fn && this.positional && this.named) {
-      const { fn } = this;
-      fn(this.positional, this.named);
+    if (this.callback && this.positional && this.named) {
+      this.callback(this.positional, this.named);
     }
+
     super.willDestroy();
   }
 }
