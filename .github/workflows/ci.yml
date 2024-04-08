@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         package-location:
-          - 'ember-render-helpers'
+          - 'packages/ember-render-helpers'
           - 'test-app'
     timeout-minutes: 5
     steps:
@@ -50,7 +50,7 @@ jobs:
     strategy:
       matrix:
         package-location:
-          - 'ember-render-helpers'
+          - 'packages/ember-render-helpers'
           - 'test-app'
     timeout-minutes: 5
     steps:
