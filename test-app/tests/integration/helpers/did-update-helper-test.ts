@@ -5,10 +5,10 @@ import {
   render,
   type TestContext as BaseTestContext,
 } from '@ember/test-helpers';
-import { setupRenderingTest } from 'test-app/tests/helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import type { CallbackFunction } from 'ember-render-helpers';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'test-app/tests/helpers';
 
 interface TestContext extends BaseTestContext {
   argument1: any;

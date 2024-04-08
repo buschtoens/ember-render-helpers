@@ -1,10 +1,11 @@
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
+
 import type {
   CallbackFunction,
   NamedParameters,
   PositionalParameters,
-} from 'ember-render-helpers/types';
+} from '../types.ts';
 
 interface DidInsertHelperSignature {
   Args: {

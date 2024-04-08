@@ -4,7 +4,8 @@
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "declarationDir": "declarations",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*",

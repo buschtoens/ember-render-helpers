@@ -53,33 +53,22 @@ module.exports = {
         ],
       },
     },
-    // Node files
+    // Node files (v2 addon)
     {
       files: [
         './.eslintrc.js',
         './.prettierrc.js',
         './.stylelintrc.js',
         './.template-lintrc.js',
-        './ember-cli-build.js',
-        './index.js',
-        './testem.js',
+        './addon-main.cjs',
         './blueprints/*/index.js',
-        './config/**/*.js',
-        './tests/dummy/config/**/*.js',
+        './rollup.config.mjs',
       ],
       env: {
         browser: false,
         node: true,
       },
       extends: ['plugin:n/recommended'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
-    // Test files
-    {
-      files: ['tests/**/*-test.{gjs,gts,js,ts}'],
-      extends: ['plugin:qunit/recommended'],
     },
   ],
 };
