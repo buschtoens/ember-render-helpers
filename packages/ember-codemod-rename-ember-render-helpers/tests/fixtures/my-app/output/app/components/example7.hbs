@@ -1,7 +1,7 @@
 {{#let
-  (did-insert this.doSomething)
-  (did-update this.doSomething)
-  (will-destroy this.doSomething)
+  (did-insert-helper this.doSomething)
+  (did-update-helper this.doSomething)
+  (will-destroy-helper this.doSomething)
   as |onInsert onUpdate onDestroy|
 }}
   {{onInsert}}
