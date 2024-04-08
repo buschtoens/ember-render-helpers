@@ -7,7 +7,7 @@ import {
 } from '@ember/test-helpers';
 import { setupRenderingTest } from 'dummy/tests/helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import type { CallbackFunction } from 'ember-render-helpers/types';
+import type { CallbackFunction } from 'ember-render-helpers';
 import { module, test } from 'qunit';
 
 interface TestContext extends BaseTestContext {
