@@ -1,0 +1,10 @@
+{{#let
+  (did-insert this.doSomething)
+  (did-update this.doSomething)
+  (will-destroy this.doSomething)
+  as |onInsert onUpdate onDestroy|
+}}
+  {{onInsert}}
+  {{onUpdate}}
+  {{onDestroy}}
+{{/let}}

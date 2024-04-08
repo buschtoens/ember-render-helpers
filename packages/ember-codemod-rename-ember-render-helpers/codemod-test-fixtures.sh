@@ -18,3 +18,7 @@ pnpm build
 ./codemod-test-fixture.sh \
   -N "--type app" \
   my-app
+
+./codemod-test-fixture.sh \
+  -N "--type v1-addon" \
+  my-v1-addon
