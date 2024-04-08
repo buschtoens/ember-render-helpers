@@ -1,24 +1,13 @@
 {
+  "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
-    "target": "es2017",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noEmitOnError": false,
-    "noEmit": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
+    // Don't check the types of dependencies
+    "skipLibCheck": true,
+
+    // The combination of `baseUrl` with `paths` allows Ember's classic package
+    // layout, which is not resolveable with the Node resolution algorithm, to
+    // work with TypeScript.
     "baseUrl": ".",
-    "module": "es6",
     "paths": {
       "dummy/tests/*": [
         "tests/*"
@@ -51,5 +40,11 @@
     "types/**/*",
     "test-support/**/*",
     "addon-test-support/**/*"
-  ]
+  ],
+  "glint": {
+    "environment": [
+      "ember-loose",
+      "ember-template-imports"
+    ]
+  }
 }

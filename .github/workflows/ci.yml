@@ -1,88 +1,101 @@
-# This workflow is largely based on
-# https://github.com/salsify/ember-css-modules/blob/master/.github/workflows/ci.yml
-
 name: CI
 
-# These trigger patterns courtesy of https://github.com/broccolijs/broccoli/pull/436
 on:
   pull_request:
   push:
-    # filtering branches here prevents duplicate builds from pull_request and push
     branches:
       - master
       - "v*"
-    # always run CI for tags
     tags:
       - "*"
 
-  # early issue detection: run CI weekly on Sundays
-  schedule:
-    - cron: "0 6 * * 0"
-
 env:
-  CI: true
+  NODE_VERSION: 18
 
 jobs:
-  test-locked-deps:
-    name: Locked Deps
-    runs-on: ubuntu-16.04
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-      - name: Lint JS
-        run: yarn lint:js
-      - name: Lint Types
-        run: yarn lint:types
-      - name: Lint Handlebars
-        run: yarn lint:hbs
-      - name: Browser Tests
-        run: yarn test
+      - name: Check out a copy of the repo
+        uses: actions/checkout@v4
 
-  test-old-dependencies:
-    name: Oldest Supported Env
-    runs-on: ubuntu-16.04
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-      - name: Browser Tests
-        run: yarn test
+      - name: Check out a copy of the repo
+        uses: actions/checkout@v4
 
-  test-try:
-    name: Ember Try
-    runs-on: ubuntu-16.04
-    needs: [test-locked-deps]
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm test
+
+  test-compatibility:
+    name: Test compatibility
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         scenario:
-          - ember-lts-3.8
-          - ember-lts-3.12
-          - ember-lts-3.16
-          - ember-lts-3.20
-          - ember-3.23
-          - ember-release
-          - ember-beta
-          - ember-canary
+          - 'ember-lts-3.28'
+          - 'ember-lts-4.4'
+          - 'ember-lts-4.8'
+          - 'ember-lts-4.12'
+          - 'ember-lts-5.4'
+          - 'ember-release'
+          - 'embroider-safe'
+          - 'embroider-optimized'
+    timeout-minutes: 7
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
-      - name: Install Node
-        uses: actions/setup-node@v1
+      - name: Check out a copy of the repo
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
         with:
-          node-version: 12
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-      - name: Try Scenario
-        run: yarn ember try:one ${{ matrix.scenario }}
+          version: latest
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test
+        run: pnpm test:ember-compatibility ${{ matrix.scenario }} --- pnpm test
