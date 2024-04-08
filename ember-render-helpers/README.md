@@ -41,14 +41,15 @@ ember install ember-render-helpers
     }
     ```
 
-- In a `<template>` tag, use the named import to consume the `{{local}}` helper.
+- In a `<template>` tag, use the named import to consume the helpers.
 
     ```ts
+    import { action } from '@ember/object';
     import Component from '@glimmer/component';
     import { didInsertHelper } from 'ember-render-helpers';
 
     export default class HelloComponent extends Component {
-      sayHello() {
+      @action sayHello() {
         console.log('Hello!');
       }
 
