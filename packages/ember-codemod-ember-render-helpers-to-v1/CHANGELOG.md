@@ -1,5 +1,11 @@
 # ember-codemod-ember-render-helpers-to-v1
 
+## 1.0.1
+
+### Patch Changes
+
+- [#449](https://github.com/buschtoens/ember-render-helpers/pull/449) Updated dependencies and refactored code ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.0
 
 ### Major Changes

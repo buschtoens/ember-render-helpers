@@ -1,15 +1,15 @@
 {
   "name": "ember-codemod-ember-render-helpers-to-v1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rename helpers from ember-render-helpers",
   "keywords": [
     "codemod",
     "ember-codemod",
     "emberjs"
   ],
-  "repository": "",
+  "repository": "buschtoens/ember-render-helpers",
   "license": "MIT",
-  "author": "",
+  "author": "Isaac J. Lee",
   "type": "module",
   "main": "dist/src/index.js",
   "bin": "dist/bin/ember-codemod-ember-render-helpers-to-v1.js",
