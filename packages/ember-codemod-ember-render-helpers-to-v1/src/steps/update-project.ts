@@ -3,13 +3,13 @@ import { join } from 'node:path';
 
 import { findFiles } from '@codemod-utils/files';
 
-import { Options } from '../../../types/index.js';
-import { renameHelpers } from '../../../utils/steps/update-templates/rename-helpers.js';
+import type { Options } from '../types/index.js';
+import { renameHelpers } from './update-project/rename-helpers.js';
 
-export function updateTemplates(options: Options): void {
-  const { projectRoot } = options;
+export function updateProject(options: Options): void {
+  const { projectRoot, src } = options;
 
-  const filePaths = findFiles('addon/{components,templates}/**/*.hbs', {
+  const filePaths = findFiles(src, {
     projectRoot,
   });
 
