@@ -31,16 +31,16 @@
   },
   "dependencies": {
     "@codemod-utils/ast-template": "^1.1.2",
-    "@codemod-utils/files": "^2.0.0",
+    "@codemod-utils/files": "^2.0.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
-    "@codemod-utils/tests": "^1.1.3",
+    "@codemod-utils/tests": "^1.1.4",
     "@sondr3/minitest": "^0.1.2",
     "@tsconfig/node18": "^18.2.4",
     "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^18.19.30",
+    "@types/node": "^18.19.31",
     "@types/yargs": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
