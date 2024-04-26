@@ -7,9 +7,9 @@ import { Options } from '../../../types/index.js';
 import { renameHelpers } from '../../../utils/steps/update-templates/rename-helpers.js';
 
 export function updateTemplates(options: Options): void {
-  const { projectRoot } = options;
+  const { projectRoot, src } = options;
 
-  const filePaths = findFiles('addon/{components,templates}/**/*.hbs', {
+  const filePaths = findFiles(src, {
     projectRoot,
   });
 

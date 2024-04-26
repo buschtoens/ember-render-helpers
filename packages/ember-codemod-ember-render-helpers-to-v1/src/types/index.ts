@@ -5,7 +5,7 @@ type CodemodOptions = {
 
 type Options = {
   projectRoot: string;
-  projectType: 'app' | 'v1-addon';
+  src: string[];
 };
 
 export type { CodemodOptions, Options };
