@@ -1,4 +1,4 @@
-import type { CodemodOptions, Options } from '../../types/index.js';
+import type { CodemodOptions, Options } from '../types/index.js';
 
 function getSrc(projectType: CodemodOptions['projectType']): string[] {
   switch (projectType) {

@@ -1,16 +1,8 @@
-import { migrateEmberApp, migrateEmberV1Addon } from './migration/index.js';
+import { createOptions, updateProject } from './steps/index.js';
 import type { CodemodOptions } from './types/index.js';
 
 export function runCodemod(codemodOptions: CodemodOptions): void {
-  switch (codemodOptions.projectType) {
-    case 'app': {
-      migrateEmberApp(codemodOptions);
-      break;
-    }
+  const options = createOptions(codemodOptions);
 
-    case 'v1-addon': {
-      migrateEmberV1Addon(codemodOptions);
-      break;
-    }
-  }
+  updateProject(options);
 }
