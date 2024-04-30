@@ -104,6 +104,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     assert.verifySteps(['callback']);
 
+    // eslint-disable-next-line ember/no-runloop
     run(() => {
       setProperties(this, {
         callback: () => {
@@ -135,6 +136,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     assert.verifySteps(['callback']);
 
+    // eslint-disable-next-line ember/no-runloop
     run(() => {
       setProperties(this, {
         argument1: 'abc',
@@ -170,6 +172,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     assert.verifySteps(['callback']);
 
+    // eslint-disable-next-line ember/no-runloop
     run(() => {
       setProperties(this, {
         argument1: 'abc',
@@ -200,6 +203,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     assert.verifySteps(['callback']);
 
+    // eslint-disable-next-line ember/no-runloop
     run(() => {
       setProperties(this, {
         someCondition: false,
@@ -208,6 +212,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     assert.verifySteps([]);
 
+    // eslint-disable-next-line ember/no-runloop
     run(() => {
       setProperties(this, {
         callback: () => {
