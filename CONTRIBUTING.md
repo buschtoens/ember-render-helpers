@@ -1,26 +1,130 @@
-# How To Contribute
+# Contributing to ember-render-helpers
 
-## Installation
+## Local development
 
-* `git clone <repository-url>`
-* `cd ember-render-helpers`
-* `yarn install`
+<details>
 
-## Linting
+<summary>Install dependencies</summary>
 
-* `yarn lint:hbs`
-* `yarn lint:js`
-* `yarn lint:js --fix`
+1. Fork and clone this repo.
 
-## Running tests
+    ```sh
+    git clone git@github.com:<your-github-handle>/ember-render-helpers.git
+    ```
 
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
+1. Change directory.
 
-## Running the dummy application
+    ```sh
+    cd ember-render-helpers
+    ```
 
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+1. Use [`pnpm`](https://pnpm.io/installation) to install dependencies.
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+    ```sh
+    pnpm install
+    ```
+
+</details>
+
+
+<details>
+
+<summary>Run the demo app</summary>
+
+1. Once dependencies have been installed, you can run the [test app](./test-app).
+
+    ```sh
+    # From the workspace root
+    pnpm start
+    ```
+
+1. Open the app at [http://localhost:4200](http://localhost:4200).
+
+</details>
+
+
+<details>
+
+<summary>Lint files</summary>
+
+1. When you write code, please check that it meets the linting rules.
+
+    ```sh
+    # From the workspace root
+    pnpm lint
+    ```
+
+1. You can run `lint:fix` to automatically fix linting errors.
+
+    ```sh
+    # From the workspace root
+    pnpm lint:fix
+    ```
+
+</details>
+
+
+<details>
+
+<summary>Run tests</summary>
+
+1. When you write code, please check that all tests continue to pass.
+
+    ```sh
+    # From the workspace root
+    pnpm test
+    ```
+
+</details>
+
+
+<details>
+
+<summary>Add changeset to pull request</code></summary>
+
+1. To record how a pull request affects packages, you will want to add a changeset.
+
+    The changeset provides a summary of the code change. It also describes how package versions should be updated (major, minor, or patch) as a result of the code change.
+
+    ```sh
+    # From the workspace root
+    pnpm changeset
+    ```
+
+</details>
+
+
+<details>
+
+<summary>Publish packages (for admins)</summary>
+
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled.
+
+1. Run the `release:changelog` script. This removes changesets, updates the package versions, and updates the `CHANGELOG`'s.
+
+    ```sh
+    # From the workspace root
+    GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:changelog
+    ```
+
+1. The workspace root's version (e.g. `0.1.3`) is more of an identifier than a (semantic) version. We will use it to name the tag that will be published.
+
+    In the root `package.json`, update the version following the "highest-version" formula:
+
+    ```
+    workspace root version = max(
+      max(all package versions),
+      workspace root version + 0.0.1,
+    );
+    ```
+
+1. [Create a tag](https://github.com/buschtoens/ember-render-helpers/releases/new) and provide release notes. The tag name should match the workspace root's version.
+
+1. Publish the packages.
+
+    ```sh
+    # From the workspace root
+    pnpm release:publish
+    ```
+
+</details>
