@@ -38,13 +38,32 @@ module.exports = {
     },
   },
   overrides: [
-    // TypeScript and JavaScript files
+    // Ember files
     {
-      files: ['**/*.{gjs,gts,js,ts}'],
+      files: ['**/*.{gts,ts}'],
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
       ],
+      rules: {
+        '@typescript-eslint/array-type': 'error',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-import-type-side-effects': 'error',
+      },
+    },
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      extends: ['plugin:ember/recommended-gts'],
+    },
+    {
+      files: ['**/*.gjs'],
+      parser: 'ember-eslint-parser',
+      extends: ['plugin:ember/recommended-gjs'],
+    },
+    {
+      files: ['**/*.{gjs,gts,js,ts}'],
       rules: {
         'import/no-duplicates': 'error',
         'import/no-unresolved': [
@@ -53,13 +72,25 @@ module.exports = {
         ],
       },
     },
-    // Node files (v2 addon)
+    {
+      files: ['src/**/*.{gjs,gts,js,ts}'],
+      rules: {
+        'import/extensions': [
+          'error',
+          'always',
+          {
+            ignorePackages: true,
+          },
+        ],
+      },
+    },
+    // Node files
     {
       files: [
-        './.eslintrc.js',
-        './.prettierrc.js',
-        './.stylelintrc.js',
-        './.template-lintrc.js',
+        './.eslintrc.{cjs,js}',
+        './.prettierrc.{cjs,js}',
+        './.stylelintrc.{cjs,js}',
+        './.template-lintrc.{cjs,js}',
         './addon-main.cjs',
         './blueprints/*/index.js',
         './rollup.config.mjs',
