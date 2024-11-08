@@ -1,37 +1,26 @@
-import Helper from '@ember/component/helper';
-import { assert } from '@ember/debug';
+import { deprecate } from '@ember/debug';
 
-import {
-  PositionalParameters,
-  NamedParameters,
-  HelperCallback
-} from 'ember-render-helpers/types';
+import DidUpdateHelper from './did-update-helper';
 
-/**
- * This helper is activated only on _updates_ to it's arguments (both positional
- * and named). It does not run during or after initial render, or before it is
- * un-rendered (removed from the DOM).
- */
-export default class DidUpdateHelper extends Helper {
-  didRun = false;
+export default class DeprecatedDidUpdateHelper extends DidUpdateHelper {
+  /* eslint-disable-next-line @typescript-eslint/ban-types */
+  constructor(properties?: object) {
+    super(properties);
 
-  compute(positional: PositionalParameters, named: NamedParameters): void {
-    const fn = positional[0] as HelperCallback;
-    assert(
-      `\`{{did-update fn}}\` expects a function as the first parameter. You provided: ${fn}`,
-      typeof fn === 'function'
+    deprecate(
+      'The {{did-update}} helper has been renamed to {{did-update-helper}}.',
+      false,
+      {
+        id: 'new-helper-names',
+        until: '1.0.0',
+        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+        // @ts-ignore: Outdated types do not know the for property yet but cannot be upgraded.
+        for: 'ember-render-helpers',
+        since: {
+          available: '0.2.1',
+          enabled: '0.2.1'
+        }
+      }
     );
-    if (!this.didRun) {
-      this.didRun = true;
-
-      // Consume individual properties to entangle tracking.
-      // https://github.com/emberjs/ember.js/issues/19277
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      positional.forEach(() => {});
-      Object.values(named);
-
-      return;
-    }
-    fn(positional.slice(1), named);
   }
 }

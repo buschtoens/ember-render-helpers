@@ -1,6 +1,6 @@
 {
   "name": "ember-render-helpers",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Complimentary render template helpers to the render modifiers",
   "keywords": [
     "ember-addon",
@@ -78,5 +78,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "volta": {
+    "node": "16.20.2"
   }
 }

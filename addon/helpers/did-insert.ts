@@ -1,28 +1,26 @@
-import Helper from '@ember/component/helper';
-import { assert } from '@ember/debug';
+import { deprecate } from '@ember/debug';
 
-import {
-  PositionalParameters,
-  NamedParameters,
-  HelperCallback
-} from 'ember-render-helpers/types';
+import DidInsertHelper from './did-insert-helper';
 
-/**
- * This helper is activated only when it is rendered for the first time
- * (inserted in the DOM). It does not run during or after it is un-rendered
- * (removed from the DOM), or when its arguments are updated.
- */
-export default class DidInsertHelper extends Helper {
-  didRun = false;
+export default class DeprecatedDidInsertHelper extends DidInsertHelper {
+  /* eslint-disable-next-line @typescript-eslint/ban-types */
+  constructor(properties?: object) {
+    super(properties);
 
-  compute(positional: PositionalParameters, named: NamedParameters): void {
-    const fn = positional[0] as HelperCallback;
-    assert(
-      `\`{{did-insert fn}}\` expects a function as the first parameter. You provided: ${fn}`,
-      typeof fn === 'function'
+    deprecate(
+      'The {{did-insert}} helper has been renamed to {{did-insert-helper}}.',
+      false,
+      {
+        id: 'new-helper-names',
+        until: '1.0.0',
+        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+        // @ts-ignore: Outdated types do not know the for property yet but cannot be upgraded.
+        for: 'ember-render-helpers',
+        since: {
+          available: '0.2.1',
+          enabled: '0.2.1'
+        }
+      }
     );
-    if (this.didRun) return;
-    this.didRun = true;
-    fn(positional.slice(1), named);
   }
 }

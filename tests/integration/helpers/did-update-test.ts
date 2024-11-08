@@ -5,14 +5,13 @@ import { module, test } from 'qunit';
 import { getProperties, set } from '@ember/object';
 import { run } from '@ember/runloop';
 
+import { hbs } from 'ember-cli-htmlbars';
 import {
   PositionalParameters,
   NamedParameters
 } from 'ember-render-helpers/types';
 
-import hbs from 'htmlbars-inline-precompile';
-
-import { TestContext } from 'dummy/tests/helpers/test-context';
+import type { TestContext } from 'dummy/tests/helpers/test-context';
 
 module('Integration | Helper | did-update', function (hooks) {
   setupRenderingTest(hooks);
