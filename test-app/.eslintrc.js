@@ -48,19 +48,25 @@ module.exports = {
       rules: {
         '@typescript-eslint/array-type': 'error',
         '@typescript-eslint/consistent-type-imports': 'error',
-        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-empty-object-type': [
+          'error',
+          {
+            allowInterfaces: 'always',
+            allowObjectTypes: 'always',
+          },
+        ],
         '@typescript-eslint/no-import-type-side-effects': 'error',
       },
-    },
-    {
-      files: ['**/*.gts'],
-      parser: 'ember-eslint-parser',
-      extends: ['plugin:ember/recommended-gts'],
     },
     {
       files: ['**/*.gjs'],
       parser: 'ember-eslint-parser',
       extends: ['plugin:ember/recommended-gjs'],
+    },
+    {
+      files: ['**/*.gts'],
+      parser: 'ember-eslint-parser',
+      extends: ['plugin:ember/recommended-gts'],
     },
     {
       files: ['**/*.{gjs,gts,js,ts}'],

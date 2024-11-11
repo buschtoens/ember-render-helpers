@@ -39,7 +39,6 @@ export default class DidUpdateHelperHelper extends Helper<DidUpdateHelperSignatu
 
       // Consume individual properties to entangle tracking.
       // https://github.com/emberjs/ember.js/issues/19277
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
       positional.forEach(() => {});
       Object.values(named);
 
