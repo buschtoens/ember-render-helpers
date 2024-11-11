@@ -20,6 +20,9 @@ importers:
       concurrently:
         specifier: ^9.1.0
         version: 9.1.0
+      update-workspace-root-version:
+        specifier: ^1.0.1
+        version: 1.0.1
 
   packages/ember-codemod-ember-render-helpers-to-v1:
     dependencies:
@@ -986,6 +989,10 @@ packages:
 
   '@codemod-utils/files@2.0.4':
     resolution: {integrity: sha512-j8T1ktraMjDsEUkqLrBrDDjrSHrrxvgfc7qSE+0vFa3lZiszQ2gxjGdVljbwACQO8otle45RTouy/w72gEbXYQ==}
+    engines: {node: 18.* || >= 20}
+
+  '@codemod-utils/json@1.1.9':
+    resolution: {integrity: sha512-WdKsWn7zhvFcrXrx4MaD6WboovfST4tJcYxwfNPrZHsLzY34HKgyT6eRGkOEc7TsyBRytZhFLZ/glNHnFCu40Q==}
     engines: {node: 18.* || >= 20}
 
   '@codemod-utils/tests@1.1.7':
@@ -6067,6 +6074,10 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
+  type-fest@4.26.1:
+    resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
+    engines: {node: '>=16'}
+
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
@@ -6171,6 +6182,11 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  update-workspace-root-version@1.0.1:
+    resolution: {integrity: sha512-6REZ+Zii/SsqXyAt2IQojJQq+ahRBCjOprB6W6Fu5sVt1cZs0RDkr69EVuHdiWxiUkTp2aYo/NHRVyJmPue6CA==}
+    engines: {node: 18.* || >= 20}
+    hasBin: true
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -7355,6 +7371,10 @@ snapshots:
     dependencies:
       glob: 10.4.5
 
+  '@codemod-utils/json@1.1.9':
+    dependencies:
+      type-fest: 4.26.1
+
   '@codemod-utils/tests@1.1.7(@sondr3/minitest@0.1.2)':
     dependencies:
       '@sondr3/minitest': 0.1.2
@@ -8021,6 +8041,27 @@ snapshots:
     dependencies:
       '@types/node': 18.19.64
 
+  '@types/ember@4.0.11':
+    dependencies:
+      '@types/ember__application': 4.0.11(@babel/core@7.26.0)
+      '@types/ember__array': 4.0.10(@babel/core@7.26.0)
+      '@types/ember__component': 4.0.22(@babel/core@7.26.0)
+      '@types/ember__controller': 4.0.12(@babel/core@7.26.0)
+      '@types/ember__debug': 4.0.8(@babel/core@7.26.0)
+      '@types/ember__engine': 4.0.11(@babel/core@7.26.0)
+      '@types/ember__error': 4.0.6
+      '@types/ember__object': 4.0.12(@babel/core@7.26.0)
+      '@types/ember__polyfills': 4.0.6
+      '@types/ember__routing': 4.0.22(@babel/core@7.26.0)
+      '@types/ember__runloop': 4.0.10
+      '@types/ember__service': 4.0.9(@babel/core@7.26.0)
+      '@types/ember__string': 3.0.15
+      '@types/ember__template': 4.0.7
+      '@types/ember__test': 4.0.6(@babel/core@7.26.0)
+      '@types/ember__utils': 4.0.7
+      '@types/rsvp': 4.0.9
+    optional: true
+
   '@types/ember@4.0.11(@babel/core@7.26.0)':
     dependencies:
       '@types/ember__application': 4.0.11(@babel/core@7.26.0)
@@ -8048,7 +8089,7 @@ snapshots:
   '@types/ember__application@4.0.11(@babel/core@7.26.0)':
     dependencies:
       '@glimmer/component': 1.1.2(@babel/core@7.26.0)
-      '@types/ember': 4.0.11(@babel/core@7.26.0)
+      '@types/ember': 4.0.11
       '@types/ember__engine': 4.0.11(@babel/core@7.26.0)
       '@types/ember__object': 4.0.12(@babel/core@7.26.0)
       '@types/ember__owner': 4.0.9
@@ -8131,6 +8172,11 @@ snapshots:
       - supports-color
     optional: true
 
+  '@types/ember__runloop@4.0.10':
+    dependencies:
+      '@types/ember': 4.0.11
+    optional: true
+
   '@types/ember__runloop@4.0.10(@babel/core@7.26.0)':
     dependencies:
       '@types/ember': 4.0.11(@babel/core@7.26.0)
@@ -8159,6 +8205,11 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+    optional: true
+
+  '@types/ember__utils@4.0.7':
+    dependencies:
+      '@types/ember': 4.0.11
     optional: true
 
   '@types/ember__utils@4.0.7(@babel/core@7.26.0)':
@@ -13778,6 +13829,8 @@ snapshots:
 
   type-fest@0.21.3: {}
 
+  type-fest@4.26.1: {}
+
   type-is@1.6.18:
     dependencies:
       media-typer: 0.3.0
@@ -13886,6 +13939,12 @@ snapshots:
       browserslist: 4.24.2
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  update-workspace-root-version@1.0.1:
+    dependencies:
+      '@codemod-utils/files': 2.0.4
+      '@codemod-utils/json': 1.1.9
+      yargs: 17.7.2
 
   uri-js@4.4.1:
     dependencies:
