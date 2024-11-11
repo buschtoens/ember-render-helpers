@@ -1,22 +1,17 @@
 import type { CodemodOptions, Options } from '../types/index.js';
 
-function getSrc(projectType: CodemodOptions['projectType']): string[] {
-  switch (projectType) {
-    case 'app': {
-      return ['app/{components,templates}/**/*.hbs'];
-    }
-
-    case 'v1-addon': {
-      return ['addon/{components,templates}/**/*.hbs'];
-    }
-  }
-}
+const source = {
+  app: ['app/{components,templates}/**/*.hbs'],
+  'v1-addon': ['addon/{components,templates}/**/*.hbs'],
+};
 
 export function createOptions(codemodOptions: CodemodOptions): Options {
   const { projectRoot, projectType } = codemodOptions;
 
+  const src = source[projectType];
+
   return {
     projectRoot,
-    src: getSrc(projectType),
+    src,
   };
 }
