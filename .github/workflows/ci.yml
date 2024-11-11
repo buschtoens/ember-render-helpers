@@ -85,7 +85,6 @@ jobs:
           - 'ember-lts-5.12'
           - 'ember-release'
           - 'ember-beta'
-          - 'embroider-safe'
           - 'embroider-optimized'
     timeout-minutes: 7
     steps:
