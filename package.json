@@ -1,6 +1,6 @@
 {
   "name": "workspace-root",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "repository": "",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "lint:fix": "pnpm --filter \"*\" lint:fix",
     "prepare": "pnpm build",
     "release:changelog": "changeset version; update-workspace-root-version",
-    "release:publish": "pnpm build && changeset publish",
+    "release:package": "pnpm build && changeset publish",
     "start": "concurrently \"pnpm:start:*\" --restart-after 5000 --prefix-colors cyan,yellow",
     "start:addon": "pnpm --filter ember-render-helpers start",
     "start:test-app": "pnpm --filter test-app start",

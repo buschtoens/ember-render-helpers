@@ -98,7 +98,7 @@
 
 <summary>Publish packages (for admins)</summary>
 
-1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with `repo` and `read:user` scopes enabled.
+1. Generate a [personal access token](https://github.com/settings/tokens/) in GitHub, with default values for scopes (none selected).
 
 1. Run the `release:changelog` script. This removes changesets, updates the package versions, and updates the `CHANGELOG`'s.
 
@@ -107,24 +107,23 @@
     GITHUB_TOKEN=<YOUR_PERSONAL_ACCESS_TOKEN> pnpm release:changelog
     ```
 
-1. The workspace root's version (e.g. `0.1.3`) is more of an identifier than a (semantic) version. We will use it to name the tag that will be published.
-
-    In the root `package.json`, update the version following the "highest-version" formula:
+    The `release:changelog` script also updated the workspace root's version (by following the highest version formula). We will use it to name the tag that will be published.
 
     ```
+    # Highest version formula
     workspace root version = max(
       max(all package versions),
       workspace root version + 0.0.1,
     );
     ```
 
-1. [Create a tag](https://github.com/buschtoens/ember-render-helpers/releases/new) and provide release notes. The tag name should match the workspace root's version.
+1. [Create a tag](https://github.com/buschtoens/ember-render-helpers/releases/new) and provide release notes. The tag name should match the package version, prefixed by the letter `v`. For example, `v1.0.0`.
 
 1. Publish the packages.
 
     ```sh
     # From the workspace root
-    pnpm release:publish
+    pnpm release:package
     ```
 
 </details>
