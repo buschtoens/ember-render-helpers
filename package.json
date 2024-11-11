@@ -6,16 +6,16 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "pnpm --filter './packages/**' build",
-    "lint": "pnpm --filter '*' lint",
-    "lint:fix": "pnpm --filter '*' lint:fix",
+    "build": "pnpm --filter \"./packages/**\" build",
+    "lint": "pnpm --filter \"*\" lint",
+    "lint:fix": "pnpm --filter \"*\" lint:fix",
     "prepare": "pnpm build",
     "release:changelog": "changeset version",
     "release:publish": "pnpm build && changeset publish",
-    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start": "concurrently \"pnpm:start:*\" --restart-after 5000 --prefix-colors cyan,yellow",
     "start:addon": "pnpm --filter ember-render-helpers start",
     "start:test-app": "pnpm --filter test-app start",
-    "test": "pnpm --filter '*' test"
+    "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.9",
