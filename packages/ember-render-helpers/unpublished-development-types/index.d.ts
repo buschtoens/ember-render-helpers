@@ -3,6 +3,7 @@
 
 import '@glint/environment-ember-loose';
 import '@glint/environment-ember-template-imports';
+import 'ember-source/types';
 
 import type EmberRenderHelpersRegistry from '../src/template-registry.ts';
 
