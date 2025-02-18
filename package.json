@@ -30,7 +30,7 @@
   },
   "pnpm": {
     "overrides": {
-      "eslint-plugin-import@2.31.0>tsconfig-paths": "^4.2.0"
+      "get-tsconfig": "4.7.3"
     }
   }
 }
