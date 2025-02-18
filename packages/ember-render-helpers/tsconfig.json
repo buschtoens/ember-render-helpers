@@ -1,11 +1,14 @@
 {
-  "extends": "@tsconfig/ember/tsconfig.json",
+  "extends": "@ijlee2-frontend-configs/typescript/ember",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "declarationDir": "declarations",
     "rootDir": "./src",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "ember-source/types"
+    ]
   },
   "include": [
     "src/**/*",

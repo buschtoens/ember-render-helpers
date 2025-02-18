@@ -9,14 +9,13 @@
 /.DS_Store
 /.env*
 /.eslintcache
-/.eslintignore
-/.eslintrc.cjs
 /.git/
 /.github/
 /.gitignore
 /.pnpm-debug.log
 /.prettierignore
-/.prettierrc.cjs
 /build.sh
+/eslint.config.mjs
+/prettier.config.mjs
 /tests/
 /update-test-fixtures.sh

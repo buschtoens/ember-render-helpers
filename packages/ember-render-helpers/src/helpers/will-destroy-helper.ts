@@ -32,6 +32,7 @@ export default class WillDestroyHelperHelper extends Helper<WillDestroyHelperSig
     const [callback, ...positionalParameters] = positional;
 
     assert(
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       `\`{{will-destroy-helper}}\` expects a function as the first parameter. You provided: ${callback}`,
       typeof callback === 'function',
     );
