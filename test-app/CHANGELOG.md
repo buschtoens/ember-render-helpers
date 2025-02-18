@@ -1,5 +1,12 @@
 # test-app
 
+## 1.0.3
+
+### Patch Changes
+
+- [#458](https://github.com/buschtoens/ember-render-helpers/pull/458) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#457](https://github.com/buschtoens/ember-render-helpers/pull/457) Removed embroider-safe from ember-try scenarios, since embroider-optimized is passing already ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.2
 
 ### Patch Changes
