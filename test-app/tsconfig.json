@@ -13,7 +13,10 @@
         "types/*"
       ]
     },
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "ember-source/types"
+    ]
   },
   "glint": {
     "environment": [
