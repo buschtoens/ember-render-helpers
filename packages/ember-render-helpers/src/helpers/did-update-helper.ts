@@ -30,6 +30,7 @@ export default class DidUpdateHelperHelper extends Helper<DidUpdateHelperSignatu
     const [callback, ...positionalParameters] = positional;
 
     assert(
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       `\`{{did-update-helper}}\` expects a callback function as the first parameter. You provided: ${callback}`,
       typeof callback === 'function',
     );
