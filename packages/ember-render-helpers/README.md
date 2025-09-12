@@ -147,3 +147,9 @@ export default class extends Component {
   }
 }
 ```
+
+
+## Compatibility
+
+- Ember.js v4.12 or above
+- Node.js v20 or above

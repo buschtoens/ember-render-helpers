@@ -6,22 +6,8 @@ module.exports = async function () {
   const { default: latestVersion } = await import('latest-version');
 
   return {
-    usePnpm: true,
+    packageManager: 'pnpm',
     scenarios: [
-      {
-        name: 'ember-lts-3.28',
-        npm: {
-          devDependencies: {
-            '@ember/test-helpers': '2.9.4',
-            '@types/ember__test-helpers': '2.9.1',
-            '@types/ember-qunit': '6.1.1',
-            'ember-cli': '~3.28.0',
-            'ember-qunit': '6.0.0',
-            'ember-resolver': '11.0.1',
-            'ember-source': '~3.28.0',
-          },
-        },
-      },
       {
         name: 'ember-lts-4.12',
         npm: {
@@ -35,6 +21,14 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~5.12.0',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-6.4',
+        npm: {
+          devDependencies: {
+            'ember-source': '~6.4.0',
           },
         },
       },
@@ -56,18 +50,6 @@ module.exports = async function () {
           },
         },
       },
-      /*
-      {
-        name: 'ember-canary',
-        npm: {
-          devDependencies: {
-            'ember-source': await latestVersion('ember-source', {
-              version: 'alpha',
-            }),
-          },
-        },
-      },
-      */
       embroiderSafe(),
       embroiderOptimized(),
     ],

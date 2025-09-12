@@ -52,7 +52,7 @@ pnpm build
 
 ## Compatibility
 
-- Node.js v18 or above
+- Node.js v20 or above
 
 
 ## Contributing
