@@ -1,6 +1,6 @@
 {
   "name": "ember-render-helpers",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Helpers that complement @ember/render-modifiers",
   "keywords": [
     "ember-addon",

@@ -1,5 +1,12 @@
 # test-app
 
+## 1.0.5
+
+### Patch Changes
+
+- [#463](https://github.com/buschtoens/ember-render-helpers/pull/463) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+- [#463](https://github.com/buschtoens/ember-render-helpers/pull/463) Dropped Ember 3.28 support ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.4
 
 ### Patch Changes
