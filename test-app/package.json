@@ -47,7 +47,7 @@
     "@ijlee2-frontend-configs/ember-template-lint": "^2.2.0",
     "@ijlee2-frontend-configs/eslint-config-ember": "^2.1.2",
     "@ijlee2-frontend-configs/prettier": "^2.1.1",
-    "@ijlee2-frontend-configs/typescript": "^1.0.4",
+    "@tsconfig/ember": "^3.0.11",
     "@types/qunit": "^2.19.13",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.1",
