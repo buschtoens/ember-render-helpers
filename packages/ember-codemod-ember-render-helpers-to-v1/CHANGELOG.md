@@ -1,5 +1,11 @@
 # ember-codemod-ember-render-helpers-to-v1
 
+## 2.0.0
+
+### Major Changes
+
+- [#463](https://github.com/buschtoens/ember-render-helpers/pull/463) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.5
 
 ### Patch Changes
