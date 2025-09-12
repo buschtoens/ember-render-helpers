@@ -7,6 +7,7 @@
 
 # misc
 /.eslintcache
+/.stylelintcache
 
 # npm/pnpm/yarn pack output
 *.tgz
