@@ -147,3 +147,8 @@ export default class extends Component {
   }
 }
 ```
+
+
+## Compatibility
+
+- Node.js v20 or above
