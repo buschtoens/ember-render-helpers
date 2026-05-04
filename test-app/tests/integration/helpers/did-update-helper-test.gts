@@ -5,8 +5,8 @@ import {
   render,
   type TestContext as BaseTestContext,
 } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
 import type { CallbackFunction } from 'ember-render-helpers';
+import { didUpdateHelper } from 'ember-render-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'test-app/tests/helpers';
 
@@ -18,7 +18,7 @@ interface TestContext extends BaseTestContext {
   someCondition?: boolean;
 }
 
-module('Integration | Helper | did-insert-helper', function (hooks) {
+module('Integration | Helper | did-update-helper', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
@@ -36,11 +36,11 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper this.callback}}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(<template>{{didUpdateHelper self.callback}}</template>);
+
+    assert.verifySteps([]);
   });
 
   test('We can pass positional arguments', async function (this: TestContext, assert) {
@@ -52,16 +52,20 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper
-        this.callback
-        this.argument1
-        this.argument2
-        this.argument3
-      }}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(
+      <template>
+        {{didUpdateHelper
+          self.callback
+          self.argument1
+          self.argument2
+          self.argument3
+        }}
+      </template>,
+    );
+
+    assert.verifySteps([]);
   });
 
   test('We can pass named arguments', async function (this: TestContext, assert) {
@@ -77,19 +81,23 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper
-        this.callback
-        argument1=this.argument1
-        argument2=this.argument2
-        argument3=this.argument3
-      }}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(
+      <template>
+        {{didUpdateHelper
+          self.callback
+          argument1=self.argument1
+          argument2=self.argument2
+          argument3=self.argument3
+        }}
+      </template>,
+    );
+
+    assert.verifySteps([]);
   });
 
-  test('Updating the callback function does not trigger the callback function', async function (this: TestContext, assert) {
+  test('Updating the callback function triggers the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
@@ -98,11 +106,11 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper this.callback}}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(<template>{{didUpdateHelper self.callback}}</template>);
+
+    assert.verifySteps([]);
 
     // eslint-disable-next-line ember/no-runloop
     run(() => {
@@ -113,28 +121,32 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       });
     });
 
-    assert.verifySteps([]);
+    assert.verifySteps(['new callback']);
   });
 
-  test('Updating positional arguments does not trigger the callback function', async function (this: TestContext, assert) {
+  test('Updating positional arguments triggers the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named): void => {
-      assert.deepEqual(positional, ['123', 456, false]);
+      assert.deepEqual(positional, ['abc', 789, true]);
 
       assert.deepEqual(named, {});
 
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper
-        this.callback
-        this.argument1
-        this.argument2
-        this.argument3
-      }}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(
+      <template>
+        {{didUpdateHelper
+          self.callback
+          self.argument1
+          self.argument2
+          self.argument3
+        }}
+      </template>,
+    );
+
+    assert.verifySteps([]);
 
     // eslint-disable-next-line ember/no-runloop
     run(() => {
@@ -145,32 +157,36 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       });
     });
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
   });
 
-  test('Updating named arguments does not trigger the callback function', async function (this: TestContext, assert) {
+  test('Updating named arguments triggers the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {
-        argument1: '123',
-        argument2: 456,
-        argument3: false,
+        argument1: 'abc',
+        argument2: 789,
+        argument3: true,
       });
 
       assert.step('callback');
     };
 
-    await render<TestContext>(hbs`
-      {{did-insert-helper
-        this.callback
-        argument1=this.argument1
-        argument2=this.argument2
-        argument3=this.argument3
-      }}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(
+      <template>
+        {{didUpdateHelper
+          self.callback
+          argument1=self.argument1
+          argument2=self.argument2
+          argument3=self.argument3
+        }}
+      </template>,
+    );
+
+    assert.verifySteps([]);
 
     // eslint-disable-next-line ember/no-runloop
     run(() => {
@@ -181,10 +197,10 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       });
     });
 
-    assert.verifySteps([]);
+    assert.verifySteps(['callback']);
   });
 
-  test('Re-inserting the helper triggers the callback function', async function (this: TestContext, assert) {
+  test('Re-inserting the helper does not trigger the callback function', async function (this: TestContext, assert) {
     this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
@@ -195,13 +211,17 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
 
     this.someCondition = true;
 
-    await render<TestContext>(hbs`
-      {{#if this.someCondition}}
-        {{did-insert-helper this.callback}}
-      {{/if}}
-    `);
+    const self = this;
 
-    assert.verifySteps(['callback']);
+    await render(
+      <template>
+        {{#if self.someCondition}}
+          {{didUpdateHelper self.callback}}
+        {{/if}}
+      </template>,
+    );
+
+    assert.verifySteps([]);
 
     // eslint-disable-next-line ember/no-runloop
     run(() => {
@@ -222,6 +242,6 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
       });
     });
 
-    assert.verifySteps(['new callback']);
+    assert.verifySteps([]);
   });
 });
