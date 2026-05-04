@@ -17,12 +17,13 @@
   "repository": "buschtoens/ember-render-helpers",
   "license": "MIT",
   "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
+  "exports": {
+    "./tests/*": "./tests/*",
+    "./*": "./app/*"
   },
   "scripts": {
-    "build": "ember build",
+    "build": "vite build",
+    "build:test": "ember build --environment=test",
     "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "lint:hbs": "ember-template-lint .",
@@ -32,14 +33,22 @@
     "lint:types": "glint",
     "prepack": "ember ts:precompile",
     "postpack": "ember ts:clean",
-    "start": "ember serve",
-    "test": "ember test",
-    "test:ember-compatibility": "./node_modules/.bin/ember try:one"
+    "start": "vite --port 4300",
+    "test": "vite build --mode test && ember test --config-file \"./testem.cjs\" --path dist --test-port 0",
+    "test:ember-compatibility": "ember try:one"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-transform-runtime": "^7.29.0",
+    "@babel/plugin-transform-typescript": "^7.28.6",
     "@ember/optional-features": "^2.2.0",
     "@ember/test-helpers": "^5.3.0",
+    "@embroider/compat": "^4.1.17",
+    "@embroider/config-meta-loader": "^1.0.0",
+    "@embroider/core": "^4.4.7",
+    "@embroider/router": "^3.0.6",
     "@embroider/test-setup": "^4.0.0",
+    "@embroider/vite": "^1.7.2",
     "@glint/core": "^1.5.2",
     "@glint/environment-ember-loose": "^1.5.2",
     "@glint/environment-ember-template-imports": "^1.5.2",
@@ -47,10 +56,13 @@
     "@ijlee2-frontend-configs/ember-template-lint": "^3.0.0",
     "@ijlee2-frontend-configs/eslint-config-ember": "^3.3.0",
     "@ijlee2-frontend-configs/prettier": "^3.1.0",
+    "@rollup/plugin-babel": "^7.0.0",
     "@tsconfig/ember": "^3.0.12",
     "@types/qunit": "^2.19.13",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^9.2.1",
+    "decorator-transforms": "^2.3.2",
     "ember-auto-import": "^2.10.0",
     "ember-cli": "~6.7.0",
     "ember-cli-babel": "^8.2.0",
@@ -68,12 +80,11 @@
     "ember-try": "^4.0.0",
     "eslint": "^9.39.4",
     "latest-version": "^9.0.0",
-    "loader.js": "^4.7.0",
     "prettier": "^3.8.3",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.5.0",
     "typescript": "^5.9.3",
-    "webpack": "^5.101.3"
+    "vite": "^8.0.10"
   },
   "engines": {
     "node": "20.* || >= 22"

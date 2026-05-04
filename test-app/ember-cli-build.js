@@ -1,19 +1,16 @@
 'use strict';
 
+const { compatBuild } = require('@embroider/compat');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
+module.exports = async function (defaults) {
+  const { buildOnce } = await import('@embroider/vite');
+
   const app = new EmberApp(defaults, {
-    // Add options here
-    autoImport: {
-      watchDependencies: ['ember-render-helpers'],
-    },
     'ember-cli-babel': {
       enableTypeScriptTransform: true,
     },
   });
 
-  const { maybeEmbroider } = require('@embroider/test-setup');
-
-  return maybeEmbroider(app);
+  return compatBuild(app, buildOnce);
 };
