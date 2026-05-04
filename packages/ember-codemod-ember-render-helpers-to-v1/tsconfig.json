@@ -5,6 +5,7 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "outDir": "dist-for-testing",
+    "target": "esnext",
     "verbatimModuleSyntax": true
   },
   "include": ["bin", "src", "tests"],

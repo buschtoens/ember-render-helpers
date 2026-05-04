@@ -6,18 +6,11 @@
     "declarationDir": "declarations",
     "rootDir": "./src",
     "skipLibCheck": true,
-    "types": [
-      "ember-source/types"
-    ]
+    "target": "esnext",
+    "types": ["ember-source/types"]
   },
-  "include": [
-    "src/**/*",
-    "unpublished-development-types/**/*"
-  ],
+  "include": ["src/**/*", "unpublished-development-types/**/*"],
   "glint": {
-    "environment": [
-      "ember-loose",
-      "ember-template-imports"
-    ]
+    "environment": ["ember-loose", "ember-template-imports"]
   }
 }

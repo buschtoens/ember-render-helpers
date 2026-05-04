@@ -8,17 +8,11 @@
       "*": ["types/*"]
     },
     "skipLibCheck": true,
-    "types": [
-      "ember-source/types",
-      "@embroider/core/virtual",
-      "vite/client"
-    ]
+    "target": "esnext",
+    "types": ["ember-source/types", "@embroider/core/virtual", "vite/client"]
   },
   "include": ["app/**/*", "tests/**/*", "types/**/*", "vite.config.mts"],
   "glint": {
-    "environment": [
-      "ember-loose",
-      "ember-template-imports"
-    ]
+    "environment": ["ember-loose", "ember-template-imports"]
   }
 }

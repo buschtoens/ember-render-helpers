@@ -8,5 +8,6 @@
 !.*
 .*/
 *.html
+README.md
 
 # specific to this package
