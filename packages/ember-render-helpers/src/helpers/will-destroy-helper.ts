@@ -42,7 +42,7 @@ export default class WillDestroyHelperHelper extends Helper<WillDestroyHelperSig
     this.positional = positionalParameters;
   }
 
-  willDestroy() {
+  willDestroy(): void {
     if (this.callback && this.positional && this.named) {
       this.callback(this.positional, this.named);
     }
