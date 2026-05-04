@@ -1,5 +1,18 @@
 # ember-render-helpers
 
+## 3.0.0
+
+### Major Changes
+
+- [#471](https://github.com/buschtoens/ember-render-helpers/pull/471) Dropped Node 20 support ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#470](https://github.com/buschtoens/ember-render-helpers/pull/470) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#469](https://github.com/buschtoens/ember-render-helpers/pull/469) Replaced @glint/core with @glint/ember-tsc ([@ijlee2](https://github.com/ijlee2))
+- [#469](https://github.com/buschtoens/ember-render-helpers/pull/469) Replaced @tsconfig/ember with @ember/library-tsconfig ([@ijlee2](https://github.com/ijlee2))
+- [#468](https://github.com/buschtoens/ember-render-helpers/pull/468) Updated lint dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.0
 
 ### Major Changes
