@@ -28,7 +28,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('We can pass a callback function', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {});
@@ -44,7 +44,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('We can pass positional arguments', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, ['123', 456, false]);
 
       assert.deepEqual(named, {});
@@ -65,7 +65,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('We can pass named arguments', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {
@@ -90,7 +90,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('Updating the callback function does not trigger the callback function', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {});
@@ -117,7 +117,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('Updating positional arguments does not trigger the callback function', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, ['123', 456, false]);
 
       assert.deepEqual(named, {});
@@ -149,7 +149,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('Updating named arguments does not trigger the callback function', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {
@@ -185,7 +185,7 @@ module('Integration | Helper | did-insert-helper', function (hooks) {
   });
 
   test('Re-inserting the helper triggers the callback function', async function (this: TestContext, assert) {
-    this.callback = (positional, named) => {
+    this.callback = (positional, named): void => {
       assert.deepEqual(positional, []);
 
       assert.deepEqual(named, {});

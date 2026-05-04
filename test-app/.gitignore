@@ -1,6 +1,7 @@
 # compiled output
 /declarations/
 /dist/
+/tmp/
 
 # dependencies
 /node_modules/
@@ -11,7 +12,6 @@
 /.eslintcache
 /.pnpm-debug.log
 /.stylelintcache
-/coverage/
 /testem.log
 
 # broccoli-debug

@@ -36,17 +36,17 @@
   },
   "devDependencies": {
     "@codemod-utils/tests": "^2.0.4",
-    "@ijlee2-frontend-configs/eslint-config-node": "^2.1.2",
-    "@ijlee2-frontend-configs/prettier": "^2.1.1",
+    "@ijlee2-frontend-configs/eslint-config-node": "^3.3.0",
+    "@ijlee2-frontend-configs/prettier": "^3.1.0",
     "@sondr3/minitest": "^0.1.2",
-    "@tsconfig/node20": "^20.1.6",
-    "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^18.19.124",
-    "@types/yargs": "^17.0.33",
+    "@tsconfig/node20": "^20.1.9",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^20.19.39",
+    "@types/yargs": "^17.0.35",
     "concurrently": "^9.2.1",
-    "eslint": "^9.35.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "eslint": "^9.39.4",
+    "prettier": "^3.8.3",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": "20.* || >= 22"
