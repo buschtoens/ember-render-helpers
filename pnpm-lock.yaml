@@ -45,9 +45,9 @@ importers:
       '@sondr3/minitest':
         specifier: ^0.1.2
         version: 0.1.2
-      '@tsconfig/node20':
-        specifier: ^20.1.9
-        version: 20.1.9
+      '@tsconfig/node22':
+        specifier: ^22.0.5
+        version: 22.0.5
       '@tsconfig/strictest':
         specifier: ^2.0.8
         version: 2.0.8
@@ -1833,8 +1833,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@tsconfig/node20@20.1.9':
-    resolution: {integrity: sha512-IjlTv1RsvnPtUcjTqtVsZExKVq+KQx4g5pCP5tI7rAs6Xesl2qFwSz/tPDBC4JajkL/MlezBu3gPUwqRHl+RIg==}
+  '@tsconfig/node22@22.0.5':
+    resolution: {integrity: sha512-hLf2ld+sYN/BtOJjHUWOk568dvjFQkHnLNa6zce25GIH+vxKfvTgm3qpaH6ToF5tu/NN0IH66s+Bb5wElHrLcw==}
 
   '@tsconfig/strictest@2.0.8':
     resolution: {integrity: sha512-XnQ7vNz5HRN0r88GYf1J9JJjqtZPiHt2woGJOo2dYqyHGGcd6OLGqSlBB6p1j9mpzja6Oe5BoPqWmeDx6X9rLw==}
@@ -8366,7 +8366,7 @@ snapshots:
 
   '@sondr3/minitest@0.1.2': {}
 
-  '@tsconfig/node20@20.1.9': {}
+  '@tsconfig/node22@22.0.5': {}
 
   '@tsconfig/strictest@2.0.8': {}
 
