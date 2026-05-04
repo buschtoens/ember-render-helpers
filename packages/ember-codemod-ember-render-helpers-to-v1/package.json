@@ -32,12 +32,12 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-template": "^2.0.3",
-    "@codemod-utils/files": "^3.0.5",
+    "@codemod-utils/ast-template": "^3.0.1",
+    "@codemod-utils/files": "^4.0.1",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@codemod-utils/tests": "^2.0.4",
+    "@codemod-utils/tests": "^3.0.2",
     "@ijlee2-frontend-configs/eslint-config-node": "^3.3.0",
     "@ijlee2-frontend-configs/prettier": "^3.1.0",
     "@sondr3/minitest": "^0.1.2",
