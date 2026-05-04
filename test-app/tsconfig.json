@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/ember/tsconfig.json",
+  "extends": "@ember/app-tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -7,12 +7,18 @@
       "test-app/*": ["app/*"],
       "*": ["types/*"]
     },
-    "skipLibCheck": true,
+    "plugins": [
+      {
+        "name": "@glint/tsserver-plugin"
+      }
+    ],
     "target": "esnext",
-    "types": ["ember-source/types", "@embroider/core/virtual", "vite/client"]
+    "types": [
+      "ember-source/types",
+      "@embroider/core/virtual",
+      "@glint/ember-tsc/types",
+      "vite/client"
+    ]
   },
-  "include": ["app/**/*", "tests/**/*", "types/**/*", "vite.config.mts"],
-  "glint": {
-    "environment": ["ember-loose", "ember-template-imports"]
-  }
+  "include": ["app/**/*", "tests/**/*", "types/**/*", "vite.config.mts"]
 }
