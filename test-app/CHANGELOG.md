@@ -1,5 +1,12 @@
 # test-app
 
+## 2.0.1
+
+### Patch Changes
+
+- [#473](https://github.com/buschtoens/ember-render-helpers/pull/473) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#473](https://github.com/buschtoens/ember-render-helpers/pull/473) Began testing ember-beta and ember-canary scenarios ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.0
 
 ### Major Changes
