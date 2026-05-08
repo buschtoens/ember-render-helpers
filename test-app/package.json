@@ -51,7 +51,7 @@
     "@glint/template": "^1.7.7",
     "@glint/tsserver-plugin": "^2.4.0",
     "@ijlee2-frontend-configs/ember-template-lint": "^3.0.0",
-    "@ijlee2-frontend-configs/eslint-config-ember": "^3.3.0",
+    "@ijlee2-frontend-configs/eslint-config-ember": "^3.4.0",
     "@ijlee2-frontend-configs/prettier": "^3.1.0",
     "@rollup/plugin-babel": "^7.0.0",
     "@types/qunit": "^2.19.13",
@@ -78,7 +78,7 @@
     "qunit": "^2.25.0",
     "qunit-dom": "^3.5.1",
     "typescript": "^5.9.3",
-    "vite": "^8.0.10"
+    "vite": "^8.0.11"
   },
   "engines": {
     "node": "22.* || >= 24"
