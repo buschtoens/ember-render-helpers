@@ -1,6 +1,6 @@
 {
   "name": "ember-codemod-ember-render-helpers-to-v1",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Rename helpers from ember-render-helpers",
   "keywords": [
     "codemod",
