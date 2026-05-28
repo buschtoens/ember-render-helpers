@@ -7,9 +7,7 @@ const helpers = {
 } as const;
 
 export function renameHelpers(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     MustacheStatement(node) {
       if (node.path.type !== 'PathExpression') {
         return;
