@@ -7,15 +7,16 @@
     "ember-codemod",
     "emberjs"
   ],
-  "repository": "buschtoens/ember-render-helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buschtoens/ember-render-helpers.git",
+    "directory": "packages/ember-codemod-ember-render-helpers-to-v1"
+  },
   "license": "MIT",
   "author": "Isaac J. Lee",
   "type": "module",
   "main": "dist/src/index.js",
   "bin": "dist/bin/ember-codemod-ember-render-helpers-to-v1.js",
-  "directories": {
-    "test": "tests"
-  },
   "files": [
     "dist"
   ],
@@ -32,23 +33,21 @@
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
-    "@codemod-utils/ast-template": "^4.0.0",
-    "@codemod-utils/files": "^4.0.1",
-    "yargs": "^18.0.0"
+    "@codemod-utils/ast-template": "^4.1.1",
+    "@codemod-utils/files": "^4.1.1",
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
-    "@codemod-utils/tests": "^3.0.2",
-    "@ijlee2-frontend-configs/eslint-config-node": "^3.4.2",
-    "@ijlee2-frontend-configs/prettier": "^3.1.1",
-    "@sondr3/minitest": "^0.1.2",
-    "@tsconfig/node22": "^22.0.5",
-    "@tsconfig/strictest": "^2.0.8",
-    "@types/node": "^22.19.19",
+    "@codemod-utils/tests": "^3.3.0",
+    "@ijlee2-frontend-configs/eslint-config-node": "^4.8.0",
+    "@ijlee2-frontend-configs/prettier": "^3.4.3",
+    "@ijlee2-frontend-configs/typescript": "^4.4.0",
+    "@types/node": "^22.20.5",
     "@types/yargs": "^17.0.35",
-    "concurrently": "^10.0.0",
-    "eslint": "^9.39.4",
-    "prettier": "^3.8.3",
-    "typescript": "^5.9.3"
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": "22.* || >= 24"
