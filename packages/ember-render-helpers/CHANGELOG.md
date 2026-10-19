@@ -1,5 +1,11 @@
 # ember-render-helpers
 
+## 3.0.3
+
+### Patch Changes
+
+- [#479](https://github.com/buschtoens/ember-render-helpers/pull/479) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.2
 
 ### Patch Changes
