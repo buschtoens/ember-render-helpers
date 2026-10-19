@@ -18,10 +18,10 @@
     "test": "pnpm --filter \"*\" test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.31.0",
-    "@ijlee2-frontend-configs/changesets": "^2.1.1",
-    "concurrently": "^10.0.0",
-    "update-workspace-root-version": "^3.0.2"
+    "@changesets/cli": "^3.0.3",
+    "@ijlee2-frontend-configs/changesets": "^3.0.3",
+    "concurrently": "^10.0.6",
+    "update-workspace-root-version": "^3.0.7"
   },
   "packageManager": "pnpm@12.11.2",
   "engines": {

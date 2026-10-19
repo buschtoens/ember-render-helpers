@@ -1,3 +1,3 @@
-import getFormatter from '@ijlee2-frontend-configs/changesets';
+import getConfig from '@ijlee2-frontend-configs/changesets';
 
-export default getFormatter('buschtoens/ember-render-helpers');
+export default getConfig('buschtoens/ember-render-helpers');
