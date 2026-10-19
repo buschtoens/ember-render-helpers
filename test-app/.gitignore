@@ -11,7 +11,6 @@
 /.pnp*
 /.eslintcache
 /.pnpm-debug.log
-/.stylelintcache
 /testem.log
 
 # broccoli-debug
