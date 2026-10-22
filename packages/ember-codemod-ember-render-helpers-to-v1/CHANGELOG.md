@@ -1,5 +1,12 @@
 # ember-codemod-ember-render-helpers-to-v1
 
+## 3.1.2
+
+### Patch Changes
+
+- [#482](https://github.com/buschtoens/ember-render-helpers/pull/482) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+- [#481](https://github.com/buschtoens/ember-render-helpers/pull/481) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.1
 
 ### Patch Changes

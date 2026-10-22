@@ -1,5 +1,11 @@
 # test-app
 
+## 2.0.4
+
+### Patch Changes
+
+- [#481](https://github.com/buschtoens/ember-render-helpers/pull/481) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.3
 
 ### Patch Changes
