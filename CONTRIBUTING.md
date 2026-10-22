@@ -121,11 +121,6 @@
 
 1. [Create a tag](https://github.com/buschtoens/ember-render-helpers/releases/new) and provide release notes. The tag name should match the package version, prefixed by the letter `v` (e.g. `v0.1.2`).
 
-1. Publish the packages.
-
-    ```sh
-    # From the workspace root
-    pnpm release:publish
-    ```
+1. Once the tag is created, the packages are published to npm using trusted publishing.
 
 </details>
