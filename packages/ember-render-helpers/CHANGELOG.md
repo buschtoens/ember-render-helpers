@@ -1,5 +1,11 @@
 # ember-render-helpers
 
+## 3.0.4
+
+### Patch Changes
+
+- [#482](https://github.com/buschtoens/ember-render-helpers/pull/482) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.3
 
 ### Patch Changes
